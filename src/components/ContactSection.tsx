@@ -105,7 +105,7 @@ const ContactSection = () => {
                   },
                   {
                     title: "E-mail",
-                    content: "contato@leticiatecidos.com.br\nvendas@leticiatecidos.com.br"
+                    content: "tecidosleticia@gmail.com"
                   },
                   {
                     title: "Horário de Funcionamento",

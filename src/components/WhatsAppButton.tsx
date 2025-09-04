@@ -8,7 +8,7 @@ interface WhatsAppButtonProps {
 }
 
 const WhatsAppButton = ({ 
-  phoneNumber = "5511999999999", // TODO: Atualizar com número real do WhatsApp Business
+  phoneNumber = "5513996479114", // WhatsApp Business da Tecido Luz Brasil
   message = "Olá! Visitei o site da Tecido Luz Brasil e gostaria de saber mais sobre os tecidos premium. Podem me ajudar com informações sobre preços, disponibilidade e modalidades de entrega?" 
 }: WhatsAppButtonProps) => {
   const [showTooltip, setShowTooltip] = useState(false);
