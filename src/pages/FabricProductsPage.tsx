@@ -8,7 +8,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { ArrowRight, Search, Filter } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import ChatBot from '@/components/ChatBot';
+import WhatsAppButton from '@/components/WhatsAppButton';
 import { useProducts, useProductCategories } from '@/hooks/useProducts';
 
 const FabricProductsPage = () => {
@@ -286,7 +286,7 @@ const FabricProductsPage = () => {
       </div>
 
       <Footer />
-      <ChatBot />
+      <WhatsAppButton />
     </div>
   );
 };

@@ -10,7 +10,7 @@ import Footer from '@/components/Footer';
 import ProductImageGallery from '@/components/ProductImageGallery';
 import ProductSpecifications from '@/components/ProductSpecifications';
 import RelatedProducts from '@/components/RelatedProducts';
-import ProductChatBot from '@/components/ProductChatBot';
+import WhatsAppButton from '@/components/WhatsAppButton';
 import ProductReviews from '@/components/ProductReviews';
 import { getProductImages } from '@/utils/productImages';
 import { generateProductDescription, generateSEOData } from '@/utils/productDescriptions';
@@ -363,12 +363,7 @@ const SingleProductPage = () => {
       </div>
 
 
-      {/* Contextual ChatBot */}
-      <ProductChatBot
-        productName={product.name}
-        productContext={getProductContext()}
-        suggestedQuestions={getSuggestedQuestions()}
-      />
+      <WhatsAppButton />
 
       <Footer />
     </div>

@@ -11,7 +11,7 @@ import { Star, Eye, ShoppingCart, CreditCard, Minus, Plus } from "lucide-react";
 import FabricCalculator from "@/components/FabricCalculator";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import ChatBot from "@/components/ChatBot";
+import WhatsAppButton from "@/components/WhatsAppButton";
 
 const ProductPage = () => {
   const [selectedImage, setSelectedImage] = useState(0);
@@ -324,7 +324,7 @@ const ProductPage = () => {
 
 
       <Footer />
-      <ChatBot />
+      <WhatsAppButton />
     </div>
   );
 };

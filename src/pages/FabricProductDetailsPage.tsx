@@ -7,7 +7,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { ArrowLeft, ShoppingCart, Heart, Share2, Star } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import ChatBot from '@/components/ChatBot';
+import WhatsAppButton from '@/components/WhatsAppButton';
 import { useProduct, useProductsByCategory } from '@/hooks/useProducts';
 
 // Mock reviews para cada produto
@@ -466,7 +466,7 @@ const FabricProductDetailsPage = () => {
       </div>
 
       <Footer />
-      <ChatBot />
+      <WhatsAppButton />
     </div>
   );
 };
