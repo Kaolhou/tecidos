@@ -1,0 +1,262 @@
+
+import { useState, useRef, useEffect } from "react";
+import { MessageCircle, X, Send } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { ScrollArea } from "@/components/ui/scroll-area";
+import { Badge } from "@/components/ui/badge";
+
+interface Message {
+  id: string;
+  text: string;
+  sender: 'user' | 'bot';
+  timestamp: Date;
+}
+
+interface ProductChatBotProps {
+  productName: string;
+  productContext: string;
+  suggestedQuestions: string[];
+}
+
+const ProductChatBot = ({ 
+  productName, 
+  productContext, 
+  suggestedQuestions 
+}: ProductChatBotProps) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [messages, setMessages] = useState<Message[]>([
+    {
+      id: '1',
+      text: `Olá! Vejo que você está interessado no ${productName}. Como posso ajudá-lo com informações sobre este produto?`,
+      sender: 'bot',
+      timestamp: new Date()
+    }
+  ]);
+  const [inputValue, setInputValue] = useState('');
+  const [isTyping, setIsTyping] = useState(false);
+  const [isSending, setIsSending] = useState(false);
+  const scrollAreaRef = useRef<HTMLDivElement>(null);
+
+  const webhookUrl = 'https://vmsol.app.n8n.cloud/webhook-test/bc5fbed8-a9c0-40f5-84c7-c74977744ae8';
+
+  useEffect(() => {
+    if (scrollAreaRef.current) {
+      const scrollContainer = scrollAreaRef.current.querySelector('[data-radix-scroll-area-viewport]');
+      if (scrollContainer) {
+        scrollContainer.scrollTop = scrollContainer.scrollHeight;
+      }
+    }
+  }, [messages, isTyping]);
+
+  const sendMessage = async (text: string) => {
+    if (!text.trim() || isSending) return;
+
+    const userMessage: Message = {
+      id: Date.now().toString(),
+      text: text.trim(),
+      sender: 'user',
+      timestamp: new Date()
+    };
+
+    setMessages(prev => [...prev, userMessage]);
+    setInputValue('');
+    setIsSending(true);
+    setIsTyping(true);
+
+    try {
+      // Send to webhook with product context
+      await fetch(webhookUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        mode: 'no-cors',
+        body: JSON.stringify({
+          message: text.trim(),
+          productContext: productContext,
+          productName: productName,
+          timestamp: new Date().toISOString(),
+          source: 'leticia-tecidos-product-page'
+        }),
+      });
+
+      // Enhanced bot response based on product
+      setTimeout(() => {
+        let botResponse = '';
+        
+        if (text.toLowerCase().includes('cuidado') || text.toLowerCase().includes('lavar')) {
+          botResponse = `Para o ${productName}, recomendo cuidados especiais. Nossa equipe irá te enviar um guia detalhado de cuidados. Posso ajudar com mais alguma informação sobre este produto?`;
+        } else if (text.toLowerCase().includes('metragem') || text.toLowerCase().includes('quantidade')) {
+          botResponse = `A metragem necessária para o ${productName} depende do que você quer confeccionar. Nossa equipe especializada pode te ajudar com o cálculo exato. Que tipo de peça você pretende fazer?`;
+        } else if (text.toLowerCase().includes('preço') || text.toLowerCase().includes('valor')) {
+          botResponse = `O ${productName} tem um excelente custo-benefício. Entre em contato conosco para condições especiais e possíveis descontos para quantidades maiores.`;
+        } else {
+          botResponse = `Obrigado pela sua pergunta sobre o ${productName}! Nossa equipe irá analisar sua solicitação e responder com informações detalhadas em breve.`;
+        }
+
+        const botMessage: Message = {
+          id: (Date.now() + 1).toString(),
+          text: botResponse,
+          sender: 'bot',
+          timestamp: new Date()
+        };
+        setMessages(prev => [...prev, botMessage]);
+        setIsTyping(false);
+      }, 2000);
+
+    } catch (error) {
+      console.error('Erro ao enviar mensagem:', error);
+      const errorMessage: Message = {
+        id: (Date.now() + 1).toString(),
+        text: 'Desculpe, ocorreu um erro. Nossa equipe será notificada e entrará em contato em breve.',
+        sender: 'bot',
+        timestamp: new Date()
+      };
+      setMessages(prev => [...prev, errorMessage]);
+      setIsTyping(false);
+    } finally {
+      setIsSending(false);
+    }
+  };
+
+  const handleSuggestedQuestion = (question: string) => {
+    sendMessage(question);
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    sendMessage(inputValue);
+  };
+
+  const formatTime = (date: Date) => {
+    return date.toLocaleTimeString('pt-BR', {
+      hour: '2-digit',
+      minute: '2-digit'
+    });
+  };
+
+  return (
+    <>
+      {/* Chat Widget Button */}
+      {!isOpen && (
+        <Button
+          onClick={() => setIsOpen(true)}
+          className="fixed bottom-6 right-6 z-50 w-16 h-16 rounded-full bg-petrol-800 hover:bg-petrol-900 text-white shadow-xl hover:scale-105 transition-all duration-300"
+          size="icon"
+        >
+          <MessageCircle size={28} />
+          {/* Notification badge */}
+          <div className="absolute -top-2 -right-2 w-6 h-6 bg-antracite-500 rounded-full flex items-center justify-center">
+            <span className="text-xs font-bold text-white">?</span>
+          </div>
+        </Button>
+      )}
+
+      {/* Chat Window */}
+      {isOpen && (
+        <Card className="fixed bottom-6 right-6 z-50 w-80 sm:w-96 h-[500px] shadow-2xl border-0 rounded-2xl overflow-hidden bg-white">
+          <CardHeader className="bg-petrol-800 text-white p-4">
+            <div className="flex items-center justify-between">
+              <div>
+                <CardTitle className="text-lg font-serif">Leticia Tecidos</CardTitle>
+                <p className="text-sm opacity-90 truncate">{productName}</p>
+              </div>
+              <Button
+                onClick={() => setIsOpen(false)}
+                variant="ghost"
+                size="sm"
+                className="text-white hover:bg-petrol-700 h-8 w-8 p-0"
+              >
+                <X size={16} />
+              </Button>
+            </div>
+          </CardHeader>
+
+          <CardContent className="p-0 flex flex-col h-full">
+            {/* Messages Area */}
+            <ScrollArea className="flex-1 p-4" ref={scrollAreaRef}>
+              <div className="space-y-4">
+                {messages.map((message) => (
+                  <div
+                    key={message.id}
+                    className={`flex ${message.sender === 'user' ? 'justify-end' : 'justify-start'}`}
+                  >
+                    <div
+                      className={`max-w-[85%] p-3 rounded-2xl ${
+                        message.sender === 'user'
+                          ? 'bg-petrol-800 text-white'
+                          : 'bg-gray-100 text-gray-800'
+                      }`}
+                    >
+                      <p className="text-sm">{message.text}</p>
+                      <p className={`text-xs mt-1 ${
+                        message.sender === 'user' ? 'text-petrol-200' : 'text-gray-500'
+                      }`}>
+                        {formatTime(message.timestamp)}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+
+                {/* Suggested Questions */}
+                {messages.length <= 1 && suggestedQuestions.length > 0 && (
+                  <div className="space-y-2">
+                    <p className="text-xs text-gray-500 text-center">Perguntas frequentes:</p>
+                    {suggestedQuestions.slice(0, 3).map((question, index) => (
+                      <Badge
+                        key={index}
+                        variant="outline"
+                        className="cursor-pointer hover:bg-petrol-50 transition-colors text-xs p-2 block text-center"
+                        onClick={() => handleSuggestedQuestion(question)}
+                      >
+                        {question}
+                      </Badge>
+                    ))}
+                  </div>
+                )}
+
+                {/* Typing Indicator */}
+                {isTyping && (
+                  <div className="flex justify-start">
+                    <div className="bg-gray-100 p-3 rounded-2xl">
+                      <div className="flex space-x-1">
+                        <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></div>
+                        <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
+                        <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </div>
+            </ScrollArea>
+
+            {/* Input Area */}
+            <div className="p-4 border-t">
+              <form onSubmit={handleSubmit} className="flex gap-2">
+                <Input
+                  value={inputValue}
+                  onChange={(e) => setInputValue(e.target.value)}
+                  placeholder={`Pergunte sobre ${productName.split(' ')[0]}...`}
+                  disabled={isSending}
+                  className="flex-1 rounded-full border-gray-300 focus:border-petrol-800"
+                />
+                <Button
+                  type="submit"
+                  disabled={!inputValue.trim() || isSending}
+                  size="icon"
+                  className="bg-petrol-800 hover:bg-petrol-900 rounded-full"
+                >
+                  <Send size={16} />
+                </Button>
+              </form>
+            </div>
+          </CardContent>
+        </Card>
+      )}
+    </>
+  );
+};
+
+export default ProductChatBot;

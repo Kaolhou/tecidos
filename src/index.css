@@ -1,0 +1,183 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. */
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 47.4% 11.2%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 47.4% 11.2%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 47.4% 11.2%;
+
+    --primary: 201 88% 26%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 201 90% 96%;
+    --secondary-foreground: 201 88% 26%;
+
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 201 88% 26%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 201 88% 26%;
+    
+    /* Antracite color variables */
+    --antracite-50: 248 249 250;
+    --antracite-100: 233 236 239;
+    --antracite-200: 222 226 230;
+    --antracite-300: 206 212 218;
+    --antracite-400: 173 181 189;
+    --antracite-500: 108 117 125;
+    --antracite-600: 73 80 87;
+    --antracite-700: 52 58 64;
+    --antracite-800: 33 37 41;
+    --antracite-900: 13 17 23;
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html, body, #root {
+    @apply bg-white !important;
+    background-color: white !important;
+  }
+
+  body {
+    @apply text-foreground font-sans;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif;
+  }
+
+  /* Autofill fix: remove Chrome/Edge yellow */
+  input:-webkit-autofill,
+  textarea:-webkit-autofill,
+  select:-webkit-autofill {
+    -webkit-text-fill-color: hsl(var(--foreground));
+    box-shadow: 0 0 0px 1000px hsl(var(--background)) inset;
+    transition: background-color 9999s ease-in-out 0s;
+  }
+
+  /* Removed aggressive Radix UI global overrides to respect design tokens */
+
+  /* STAR RATING SYSTEM - Use primary color */
+  .star-filled, .star-empty, [class*="star"] {
+    color: hsl(var(--primary)) !important;
+    fill: hsl(var(--primary)) !important;
+  }
+
+  /* Button styles are defined via component variants using design tokens */
+  
+  /* Mobile responsive improvements */
+  @media (max-width: 768px) {
+    .radix-tabs-list, [role="tablist"] {
+      flex-wrap: wrap !important;
+      gap: 0.25rem !important;
+      justify-content: flex-start !important;
+    }
+    
+    .radix-tabs-trigger, [role="tab"] {
+      min-height: 48px !important;
+      font-size: 14px !important;
+      padding: 12px 16px !important;
+      flex: 1 !important;
+      min-width: 120px !important;
+    }
+    
+    /* Card spacing improvements for mobile */
+    .space-y-6 > * {
+      margin-bottom: 1.5rem !important;
+    }
+    
+    /* Better button sizing for mobile */
+    button {
+      min-height: 44px !important;
+      touch-action: manipulation !important;
+    }
+  }
+}
+
+@layer components {
+  .hero-gradient {
+    background: linear-gradient(135deg, 
+      rgba(12, 74, 110, 0.02) 0%, 
+      rgba(30, 58, 95, 0.01) 50%, 
+      rgba(12, 74, 110, 0.02) 100%);
+  }
+  
+  .text-gradient {
+    background: linear-gradient(135deg, #0c4a6e, #1e3a5f);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .antracite-accent {
+    background: linear-gradient(135deg, #6c757d, #495057);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
