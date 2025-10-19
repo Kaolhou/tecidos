@@ -1,0 +1,333 @@
+UPDATE products SET
+  description = '100% poliéster. 1.40m de largura. $19.90 o metro',
+  price = 19.9,
+  width = '1.40m',
+  material = '100% poliéster'
+WHERE name ILIKE 'Crepe georgete terracota';
+
+UPDATE products SET
+  description = '100% poliéster. 1.40m de largura. $19.90 o metro',
+  price = 19.9,
+  width = '1.40m',
+  material = '100% poliéster'
+WHERE name ILIKE 'Crepe georgete branco';
+
+UPDATE products SET
+  description = '100% poliéster. 1.40m de largura. $19.90 o metro',
+  price = 19.9,
+  width = '1.40m',
+  material = '100% poliéster'
+WHERE name ILIKE 'Crepe georgete vermelho';
+
+UPDATE products SET
+  description = '100% poliéster. 1.40m de largura. $19.90 o metro',
+  price = 19.9,
+  width = '1.40m',
+  material = '100% poliéster'
+WHERE name ILIKE 'Crepe georgete azul bebê';
+
+UPDATE products SET
+  description = '100% poliéster. 1.40m de largura. $19.90 o metro',
+  price = 19.9,
+  width = '1.40m',
+  material = '100% poliéster'
+WHERE name ILIKE 'Crepe georgete preto';
+
+UPDATE products SET
+  description = '100% poliéster. 1.40m de largura. $19.90 o metro',
+  price = 19.9,
+  width = '1.40m',
+  material = '100% poliéster'
+WHERE name ILIKE 'Crepe georgete amarelo';
+
+UPDATE products SET
+  description = '100% poliéster. 1.40m de largura. $19.90 o metro',
+  price = 19.9,
+  width = '1.40m',
+  material = '100% poliéster'
+WHERE name ILIKE 'Crepe georgete creme';
+
+UPDATE products SET
+  description = '100% poliéster. 1.40m de largura. $19.90 o metro',
+  price = 19.9,
+  width = '1.40m',
+  material = '100% poliéster'
+WHERE name ILIKE 'Crepe georgete verde oliva';
+
+UPDATE products SET
+  description = '100% poliéster. 1.40m de largura. $19.90 o metro',
+  price = 19.9,
+  width = '1.40m',
+  material = '100% poliéster'
+WHERE name ILIKE 'Crepe georgete azul royal';
+
+UPDATE products SET
+  description = '100% poliéster. 1.50m de largura. $19.90 o metro',
+  price = 19.9,
+  width = '1.50m',
+  material = '100% poliéster'
+WHERE name ILIKE 'Organza cristal azul turquesa';
+
+UPDATE products SET
+  description = '100% poliéster. 1.50m de largura. $19.90 o metro',
+  price = 19.9,
+  width = '1.50m',
+  material = '100% poliéster'
+WHERE name ILIKE 'Organza cristal branco';
+
+UPDATE products SET
+  description = '100% poliéster. 1.50m de largura. $19.90 o metro',
+  price = 19.9,
+  width = '1.50m',
+  material = '100% poliéster'
+WHERE name ILIKE 'Organza cristal vermelho';
+
+UPDATE products SET
+  description = '100% poliéster. 1.50m de largura. $19.90 o metro',
+  price = 19.9,
+  width = '1.50m',
+  material = '100% poliéster'
+WHERE name ILIKE 'Organza cristal preta';
+
+UPDATE products SET
+  description = '100% poliéster. 1.50m de largura. $19.90 o metro',
+  price = 19.9,
+  width = '1.50m',
+  material = '100% poliéster'
+WHERE name ILIKE 'Organza cristal azul marinho';
+
+UPDATE products SET
+  description = '100% poliéster. 1.50m de largura. $19.90 o metro',
+  price = 19.9,
+  width = '1.50m',
+  material = '100% poliéster'
+WHERE name ILIKE 'Organza cristal verde limão';
+
+UPDATE products SET
+  description = '100% poliéster. 1.50m de largura. $19.90 o metro',
+  price = 19.9,
+  width = '1.50m',
+  material = '100% poliéster'
+WHERE name ILIKE 'Organza cristal lilás';
+
+UPDATE products SET
+  description = '100% poliéster. 1.50m de largura. $19.90 o metro',
+  price = 19.9,
+  width = '1.50m',
+  material = '100% poliéster'
+WHERE name ILIKE 'Organza cristal rosa bebê';
+
+UPDATE products SET
+  description = '100% poliéster. 1.50m de largura. $19.90 o metro',
+  price = 19.9,
+  width = '1.50m',
+  material = '100% poliéster'
+WHERE name ILIKE 'Organza cristal creme';
+
+UPDATE products SET
+  description = '100% poliéster. 1.50m de largura. $19.90 o metro',
+  price = 19.9,
+  width = '1.50m',
+  material = '100% poliéster'
+WHERE name ILIKE 'Organza cristal azul bebê';
+
+UPDATE products SET
+  description = '100% poliéster. 1.50m de largura. $19.90 o metro',
+  price = 19.9,
+  width = '1.50m',
+  material = '100% poliéster'
+WHERE name ILIKE 'Organza cristal amarelo ouro';
+
+UPDATE products SET
+  description = '100% poliéster. 1.50m de largura. $19.90 o metro',
+  price = 19.9,
+  width = '1.50m',
+  material = '100% poliéster'
+WHERE name ILIKE 'Organza cristal Royal';
+
+UPDATE products SET
+  description = '100% poliéster. 1.30m de largura. $39,90 o metro ( forro vendido separadamente)',
+  price = 39.9,
+  width = '1.30m',
+  material = '100% poliéster'
+WHERE name ILIKE 'Tule bordado preto com dourado';
+
+UPDATE products SET
+  description = '100% poliéster. 1.40m de largura. $7,50 o metro',
+  price = 7.5,
+  width = '1.40m',
+  material = '100% poliéster'
+WHERE name ILIKE 'Tule com glitter terracota';
+
+UPDATE products SET
+  description = '100% poliéster. 1.40m de largura. $7,50 o metro',
+  price = 7.5,
+  width = '1.40m',
+  material = '100% poliéster'
+WHERE name ILIKE 'Tule com glitter verde tiffany';
+
+UPDATE products SET
+  description = '100% poliéster. 1.40m de largura. $7,50 o metro',
+  price = 7.5,
+  width = '1.40m',
+  material = '100% poliéster'
+WHERE name ILIKE 'Tule com glitter vermelho';
+
+UPDATE products SET
+  description = '100% poliéster. 1.40m de largura. $7,50 o metro',
+  price = 7.5,
+  width = '1.40m',
+  material = '100% poliéster'
+WHERE name ILIKE 'Tule com glitter branco';
+
+UPDATE products SET
+  description = '100% poliéster. 1.40m de largura. $7,50 o metro',
+  price = 7.5,
+  width = '1.40m',
+  material = '100% poliéster'
+WHERE name ILIKE 'Tule com glitter lilás';
+
+UPDATE products SET
+  description = '100% poliéster. 1.40m de largura. $7,50 o metro',
+  price = 7.5,
+  width = '1.40m',
+  material = '100% poliéster'
+WHERE name ILIKE 'Tule com glitter rosa bebê';
+
+UPDATE products SET
+  description = '100% poliéster. 1.40m de largura. $7,50 o metro',
+  price = 7.5,
+  width = '1.40m',
+  material = '100% poliéster'
+WHERE name ILIKE 'Tule com glitter preto';
+
+UPDATE products SET
+  description = '70% poliéster 30% algodão. 1.30m de largura. $38,90 o metro',
+  price = 38.9,
+  width = '1.30m',
+  material = '70% poliéster 30% algodão'
+WHERE name ILIKE 'Laise bicolor preto com vermelho';
+
+UPDATE products SET
+  description = '70% poliéster 30% algodão. 1.30m de largura. $38,90 o metro',
+  price = 38.9,
+  width = '1.30m',
+  material = '70% poliéster 30% algodão'
+WHERE name ILIKE 'Laise bicolor vermelho com preto';
+
+UPDATE products SET
+  description = '70% poliéster 30% algodão. 1.30m de largura. $38,90 o metro',
+  price = 38.9,
+  width = '1.30m',
+  material = '70% poliéster 30% algodão'
+WHERE name ILIKE 'Laise bicolor branco com dourado';
+
+UPDATE products SET
+  description = '70% poliéster 30% algodão. 1.30m de largura. $38,90 o metro',
+  price = 38.9,
+  width = '1.30m',
+  material = '70% poliéster 30% algodão'
+WHERE name ILIKE 'Laise bicolor preto com dourado';
+
+UPDATE products SET
+  description = '70% poliéster 30% algodão. 1.30m de largura. $38,90 o metro',
+  price = 38.9,
+  width = '1.30m',
+  material = '70% poliéster 30% algodão'
+WHERE name ILIKE 'Laise bordada preta';
+
+UPDATE products SET
+  description = '70% poliéster 30% algodão. 1.30m de largura. $38,90 o metro',
+  price = 38.9,
+  width = '1.30m',
+  material = '70% poliéster 30% algodão'
+WHERE name ILIKE 'Laise bordada branca';
+
+UPDATE products SET
+  description = '70% poliéster 30% algodão. 1.30m de largura. $38,90 o metro',
+  price = 38.9,
+  width = '1.30m',
+  material = '70% poliéster 30% algodão'
+WHERE name ILIKE 'Laise bordada verde água';
+
+UPDATE products SET
+  description = '70% poliéster 30% algodão. 1.30m de largura. $38,90 o metro',
+  price = 38.9,
+  width = '1.30m',
+  material = '70% poliéster 30% algodão'
+WHERE name ILIKE 'Laise bordada vermelho escuro';
+
+UPDATE products SET
+  description = '70% poliéster 30% algodão. 1.30m de largura. $38,90 o metro',
+  price = 38.9,
+  width = '1.30m',
+  material = '70% poliéster 30% algodão'
+WHERE name ILIKE 'Laise bordada rosa bebê';
+
+UPDATE products SET
+  description = '70% poliéster 30% algodão. 1.30m de largura. $38,90 o metro',
+  price = 38.9,
+  width = '1.30m',
+  material = '70% poliéster 30% algodão'
+WHERE name ILIKE 'Laise bordada azul bebê';
+
+UPDATE products SET
+  description = '100% algodão. 1.30m de largura. $49,90 o metro',
+  price = 49.9,
+  width = '1.30m',
+  material = '100% algodão'
+WHERE name ILIKE 'Laise de algodão branca';
+
+UPDATE products SET
+  description = '100% algodão. 1.30m de largura. $49,90 o metro',
+  price = 49.9,
+  width = '1.30m',
+  material = '100% algodão'
+WHERE name ILIKE 'Laise de algodão pink';
+
+UPDATE products SET
+  description = '100% algodão. 1.30m de largura. $49,90 o metro',
+  price = 49.9,
+  width = '1.30m',
+  material = '100% algodão'
+WHERE name ILIKE 'Laise de algodão roxo';
+
+UPDATE products SET
+  description = '100% algodão. 1.30m de largura. $49,90 o metro',
+  price = 49.9,
+  width = '1.30m',
+  material = '100% algodão'
+WHERE name ILIKE 'Laise de algodão amarelo ouro';
+
+UPDATE products SET
+  description = '100% algodão. 1.30m de largura. $49,90 o metro',
+  price = 49.9,
+  width = '1.30m',
+  material = '100% algodão'
+WHERE name ILIKE 'Laise de algodão azul turquesa';
+
+UPDATE products SET
+  description = '100% viscose. 1.50m de largura. $19,90 o metro',
+  price = 19.9,
+  width = '1.50m',
+  material = '100% viscose'
+WHERE name ILIKE 'Viscose vermelha';
+
+UPDATE products SET
+  description = '100% viscose. 1.50m de largura. $19,90 o metro',
+  price = 19.9,
+  width = '1.50m',
+  material = '100% viscose'
+WHERE name ILIKE 'Viscose laranja';
+
+UPDATE products SET
+  description = '100% viscose. 1.50m de largura. $19,90 o metro',
+  price = 19.9,
+  width = '1.50m',
+  material = '100% viscose'
+WHERE name ILIKE 'Viscose verde bandeira';
+
+UPDATE products SET
+  description = '100% viscose. 1.50m de largura. $19,90 o metro',
+  price = 19.9,
+  width = '1.50m',

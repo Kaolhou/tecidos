@@ -1,0 +1,333 @@
+  material = '100% viscose'
+WHERE name ILIKE 'Viscose preto';
+
+UPDATE products SET
+  description = '100% viscose. 1.50m de largura. $19,90 o metro',
+  price = 19.9,
+  width = '1.50m',
+  material = '100% viscose'
+WHERE name ILIKE 'Viscose terracota';
+
+UPDATE products SET
+  description = '100% viscose. 1.50m de largura. $19,90 o metro',
+  price = 19.9,
+  width = '1.50m',
+  material = '100% viscose'
+WHERE name ILIKE 'Viscose azul royal';
+
+UPDATE products SET
+  description = '100% viscose. 1.50m de largura. $19,90 o metro',
+  price = 19.9,
+  width = '1.50m',
+  material = '100% viscose'
+WHERE name ILIKE 'Viscose off white';
+
+UPDATE products SET
+  description = '100% viscose. 1.50m de largura. $19,90 o metro',
+  price = 19.9,
+  width = '1.50m',
+  material = '100% viscose'
+WHERE name ILIKE 'Viscolinho azul bebê';
+
+UPDATE products SET
+  description = '100% viscose. 1.50m de largura. $19,90 o metro',
+  price = 19.9,
+  width = '1.50m',
+  material = '100% viscose'
+WHERE name ILIKE 'Viscolinho rose';
+
+UPDATE products SET
+  description = '100% viscose. 1.50m de largura. $19,90 o metro',
+  price = 19.9,
+  width = '1.50m',
+  material = '100% viscose'
+WHERE name ILIKE 'Viscolinho marsala';
+
+UPDATE products SET
+  description = '100% viscose. 1.50m de largura. $19,90 o metro',
+  price = 19.9,
+  width = '1.50m',
+  material = '100% viscose'
+WHERE name ILIKE 'Viscolinho amarelo bebê';
+
+UPDATE products SET
+  description = '100% viscose. 1.50m de largura. $19,90 o metro',
+  price = 19.9,
+  width = '1.50m',
+  material = '100% viscose'
+WHERE name ILIKE 'Viscolinho verde água';
+
+UPDATE products SET
+  description = '100% viscose. 1.50m de largura. $19,90 o metro',
+  price = 19.9,
+  width = '1.50m',
+  material = '100% viscose'
+WHERE name ILIKE 'Viscolinho marrom';
+
+UPDATE products SET
+  description = '100% viscose. 1.50m de largura. $19,90 o metro',
+  price = 19.9,
+  width = '1.50m',
+  material = '100% viscose'
+WHERE name ILIKE 'Viscolinho vermelho escuro';
+
+UPDATE products SET
+  description = '100% viscose. 1.50m de largura. $19,90 o metro',
+  price = 19.9,
+  width = '1.50m',
+  material = '100% viscose'
+WHERE name ILIKE 'Viscolinho preto';
+
+UPDATE products SET
+  description = '100% viscose. 1.50m de largura. $19,90 o metro',
+  price = 19.9,
+  width = '1.50m',
+  material = '100% viscose'
+WHERE name ILIKE 'Viscolinho rosa bebê';
+
+UPDATE products SET
+  description = '97% poliéster 3% elastano. 1.50m de largura. $11.90 o metro',
+  price = 11.9,
+  width = '1.50m',
+  material = '97% poliéster 3% elastano'
+WHERE name ILIKE 'Cetim com elastano branco';
+
+UPDATE products SET
+  description = '97% poliéster 3% elastano. 1.50m de largura. $11.90 o metro',
+  price = 11.9,
+  width = '1.50m',
+  material = '97% poliéster 3% elastano'
+WHERE name ILIKE 'Cetim com elastano pink';
+
+UPDATE products SET
+  description = '97% poliéster 3% elastano. 1.50m de largura. $11.90 o metro',
+  price = 11.9,
+  width = '1.50m',
+  material = '97% poliéster 3% elastano'
+WHERE name ILIKE 'Cetim com elastano preto';
+
+UPDATE products SET
+  description = '97% poliéster 3% elastano. 1.50m de largura. $11.90 o metro',
+  price = 11.9,
+  width = '1.50m',
+  material = '97% poliéster 3% elastano'
+WHERE name ILIKE 'Cetim com elastano salmão';
+
+UPDATE products SET
+  description = '97% poliéster 3% elastano. 1.50m de largura. $11.90 o metro',
+  price = 11.9,
+  width = '1.50m',
+  material = '97% poliéster 3% elastano'
+WHERE name ILIKE 'Cetim com elastano azul  Royal';
+
+UPDATE products SET
+  description = '97% poliéster 3% elastano. 1.50m de largura. $11.90 o metro',
+  price = 11.9,
+  width = '1.50m',
+  material = '97% poliéster 3% elastano'
+WHERE name ILIKE 'Cetim com elastano roxo';
+
+UPDATE products SET
+  description = '97% poliéster 3% elastano. 1.50m de largura. $11.90 o metro',
+  price = 11.9,
+  width = '1.50m',
+  material = '97% poliéster 3% elastano'
+WHERE name ILIKE 'Cetim com elastano verde água';
+
+UPDATE products SET
+  description = '97% poliéster 3% elastano. 1.50m de largura. $11.90 o metro',
+  price = 11.9,
+  width = '1.50m',
+  material = '97% poliéster 3% elastano'
+WHERE name ILIKE 'Cetim com elastano verde pistache';
+
+UPDATE products SET
+  description = '97% poliéster 3% elastano. 1.50m de largura. $11.90 o metro',
+  price = 11.9,
+  width = '1.50m',
+  material = '97% poliéster 3% elastano'
+WHERE name ILIKE 'Cetim com elastano azul marinho';
+
+UPDATE products SET
+  description = '97% poliéster 3% elastano. 1.50m de largura. $11.90 o metro',
+  price = 11.9,
+  width = '1.50m',
+  material = '97% poliéster 3% elastano'
+WHERE name ILIKE 'Cetim com elastano verde bandeira';
+
+UPDATE products SET
+  description = '97% poliéster 3% elastano. 1.50m de largura. $11.90 o metro',
+  price = 11.9,
+  width = '1.50m',
+  material = '97% poliéster 3% elastano'
+WHERE name ILIKE 'Cetim com elastano oliva';
+
+UPDATE products SET
+  description = '97% poliéster 3% elastano. 1.50m de largura. $11.90 o metro',
+  price = 11.9,
+  width = '1.50m',
+  material = '97% poliéster 3% elastano'
+WHERE name ILIKE 'Cetim com elastano verde limão';
+
+UPDATE products SET
+  description = '97% poliéster 3% elastano. 1.50m de largura. $11.90 o metro',
+  price = 11.9,
+  width = '1.50m',
+  material = '97% poliéster 3% elastano'
+WHERE name ILIKE 'Cetim com elastano vermelho';
+
+UPDATE products SET
+  description = '97% poliéster 3% elastano. 1.50m de largura. $11.90 o metro',
+  price = 11.9,
+  width = '1.50m',
+  material = '97% poliéster 3% elastano'
+WHERE name ILIKE 'Cetim com elastano bege';
+
+UPDATE products SET
+  description = '97% poliéster 3% elastano. 1.50m de largura. $11.90 o metro',
+  price = 11.9,
+  width = '1.50m',
+  material = '97% poliéster 3% elastano'
+WHERE name ILIKE 'Cetim com elastano rosa';
+
+UPDATE products SET
+  description = '97% poliéster 3% elastano. 1.50m de largura. $11.90 o metro',
+  price = 11.9,
+  width = '1.50m',
+  material = '97% poliéster 3% elastano'
+WHERE name ILIKE 'Cetim com elastano rose escuro';
+
+UPDATE products SET
+  description = '97% poliéster 3% elastano. 1.50m de largura. $11.90 o metro',
+  price = 11.9,
+  width = '1.50m',
+  material = '97% poliéster 3% elastano'
+WHERE name ILIKE 'Cetim com elastano azul bebê';
+
+UPDATE products SET
+  description = '97% poliéster 3% elastano. 1.50m de largura. $11.90 o metro',
+  price = 11.9,
+  width = '1.50m',
+  material = '97% poliéster 3% elastano'
+WHERE name ILIKE 'Cetim com elastano terracota';
+
+UPDATE products SET
+  description = '97% poliéster 3% elastano. 1.50m de largura. $11.90 o metro',
+  price = 11.9,
+  width = '1.50m',
+  material = '97% poliéster 3% elastano'
+WHERE name ILIKE 'Cetim com elastano vinho';
+
+UPDATE products SET
+  description = '100% poliéster. 1.30m de largura. $39,90 o metro ( forro vendido separadamente)',
+  price = 39.9,
+  width = '1.30m',
+  material = '100% poliéster'
+WHERE name ILIKE 'Tule bordado vermelho com prata';
+
+UPDATE products SET
+  description = '100% poliéster. 1.30m de largura. $39,90 o metro ( forro vendido separadamente)',
+  price = 39.9,
+  width = '1.30m',
+  material = '100% poliéster'
+WHERE name ILIKE 'Tule bordado com paetês terracota';
+
+UPDATE products SET
+  description = '100% poliéster. 1.30m de largura. $39,90 o metro ( forro vendido separadamente)',
+  price = 39.9,
+  width = '1.30m',
+  material = '100% poliéster'
+WHERE name ILIKE 'Tule bordado com paetês marinho';
+
+UPDATE products SET
+  description = '100% poliéster. 1.30m de largura. $39,90 o metro ( forro vendido separadamente)',
+  price = 39.9,
+  width = '1.30m',
+  material = '100% poliéster'
+WHERE name ILIKE 'Tule bordado com paetês rose';
+
+UPDATE products SET
+  description = '100% poliéster. 1.30m de largura. $39,90 o metro ( forro vendido separadamente)',
+  price = 39.9,
+  width = '1.30m',
+  material = '100% poliéster'
+WHERE name ILIKE 'Tule bordado com paetês marsala';
+
+UPDATE products SET
+  description = '100% poliéster. 1.30m de largura. $39,90 o metro ( forro vendido separadamente)',
+  price = 39.9,
+  width = '1.30m',
+  material = '100% poliéster'
+WHERE name ILIKE 'Tule bordado com paetês cinza';
+
+UPDATE products SET
+  description = '100% poliéster. 1.30m de largura. $39,90 o metro ( forro vendido separadamente)',
+  price = 39.9,
+  width = '1.30m',
+  material = '100% poliéster'
+WHERE name ILIKE 'Tule bordado branco com prata';
+
+UPDATE products SET
+  description = '100% poliéster. 1.30m de largura. $39,90 o metro ( forro vendido separadamente)',
+  price = 39.9,
+  width = '1.30m',
+  material = '100% poliéster'
+WHERE name ILIKE 'Tule bordado branco com dourado';
+
+UPDATE products SET
+  description = '100% poliéster. 1.30m de largura. $39.90 o metro ( forro vendido separadamente)',
+  price = 39.9,
+  width = '1.30m',
+  material = '100% poliéster'
+WHERE name ILIKE 'Tule bordado azul turquesa';
+
+UPDATE products SET
+  description = '100% poliéster. 1.30m de largura. $39,90 o metro ( forro vendido separadamente)',
+  price = 39.9,
+  width = '1.30m',
+  material = '100% poliéster'
+WHERE name ILIKE 'Tule bordado vermelho';
+
+UPDATE products SET
+  description = '100% poliéster. 1.30m de largura. $49,90 o metro ( forro vendido separadamente)',
+  price = 49.9,
+  width = '1.30m',
+  material = '100% poliéster'
+WHERE name ILIKE 'Tule bordado roxo com prata';
+
+UPDATE products SET
+  description = '100% poliéster. 1.30m de largura. $49,90 o metro ( forro vendido separadamente',
+  price = 49.9,
+  width = '1.30m',
+  material = '100% poliéster'
+WHERE name ILIKE 'Tule bordado roxo com dourado';
+
+UPDATE products SET
+  description = '100% poliéster. 1.30m de largura. $39.90 o metro ( forro vendido separadamente)',
+  price = 39.9,
+  width = '1.30m',
+  material = '100% poliéster'
+WHERE name ILIKE 'Tule bordado preto com prata';
+
+UPDATE products SET
+  description = '100% poliéster. 1.30m de largura. $49,90 o metro ( forro vendido separadamente)',
+  price = 49.9,
+  width = '1.30m',
+  material = '100% poliéster'
+WHERE name ILIKE 'Tule bordado Mumbai bege';
+
+UPDATE products SET
+  description = '100% poliéster. 1.30m de largura. $49,90 o metro ( forro vendido separadamente)',
+  price = 49.9,
+  width = '1.30m',
+  material = '100% poliéster'
+WHERE name ILIKE 'Tule bordado Mumbai verde água';
+
+UPDATE products SET
+  description = '100% poliéster. 1.30m de largura. $49,90 o metro ( forro vendido separadamente)',
+  price = 49.9,
+  width = '1.30m',
+  material = '100% poliéster'
+WHERE name ILIKE 'Tule bordado Mumbai azul marinho';
+
+UPDATE products SET

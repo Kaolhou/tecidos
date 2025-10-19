@@ -1,6 +1,15 @@
 import { useState, useEffect } from 'react';
 import { supabase } from '@/integrations/supabase/client';
 
+export interface ProductImage {
+  id: string;
+  product_id: string;
+  image_url: string;
+  alt_text: string | null;
+  position: number;
+  created_at: string | null;
+}
+
 export interface Product {
   id: string;
   name: string;
@@ -12,6 +21,7 @@ export interface Product {
   width: string | null;
   stock_quantity: number | null;
   created_at: string | null;
+  images?: ProductImage[];
 }
 
 export interface UseProductsResult {
@@ -39,8 +49,18 @@ export const useProducts = (options: UseProductsOptions = {}): UseProductsResult
 
       let query = supabase
         .from('products')
-        .select('*')
-        .order('created_at', { ascending: false, nullsFirst: false });
+        .select(`
+          *,
+          images:product_images(
+            id,
+            product_id,
+            image_url,
+            alt_text,
+            position,
+            created_at
+          )
+        `)
+        .order('name', { ascending: true });
 
       // Aplicar filtros
       if (options.category) {
@@ -63,7 +83,20 @@ export const useProducts = (options: UseProductsOptions = {}): UseProductsResult
         return;
       }
 
-      setProducts(data || []);
+      // Processar produtos para adicionar image_url da primeira imagem se não existir
+      const processedProducts = (data || []).map(product => {
+        if (!product.image_url && product.images && product.images.length > 0) {
+          // Ordenar imagens por position
+          const sortedImages = [...product.images].sort((a, b) => a.position - b.position);
+          return {
+            ...product,
+            image_url: sortedImages[0].image_url
+          };
+        }
+        return product;
+      });
+
+      setProducts(processedProducts);
     } catch (err) {
       console.error('Erro inesperado:', err);
       setError('Erro inesperado ao carregar produtos');
@@ -101,7 +134,17 @@ export const useProduct = (id: string) => {
 
       const { data, error: supabaseError } = await supabase
         .from('products')
-        .select('*')
+        .select(`
+          *,
+          images:product_images(
+            id,
+            product_id,
+            image_url,
+            alt_text,
+            position,
+            created_at
+          )
+        `)
         .eq('id', id)
         .single();
 
@@ -109,6 +152,12 @@ export const useProduct = (id: string) => {
         console.error('Erro ao buscar produto:', supabaseError);
         setError(supabaseError.message);
         return;
+      }
+
+      // Processar produto para adicionar image_url da primeira imagem se não existir
+      if (data && !data.image_url && data.images && data.images.length > 0) {
+        const sortedImages = [...data.images].sort((a, b) => a.position - b.position);
+        data.image_url = sortedImages[0].image_url;
       }
 
       setProduct(data);
@@ -191,12 +240,22 @@ export const useFeaturedProducts = (limit: number = 8) => {
       setLoading(true);
       setError(null);
 
-      // Buscar produtos com estoque > 0, ordenados por mais recentes
+      // Buscar produtos com estoque > 0, ordenados alfabeticamente
       const { data, error: supabaseError } = await supabase
         .from('products')
-        .select('*')
+        .select(`
+          *,
+          images:product_images(
+            id,
+            product_id,
+            image_url,
+            alt_text,
+            position,
+            created_at
+          )
+        `)
         .gt('stock_quantity', 0)
-        .order('created_at', { ascending: false })
+        .order('name', { ascending: true })
         .limit(limit);
 
       if (supabaseError) {
@@ -205,7 +264,19 @@ export const useFeaturedProducts = (limit: number = 8) => {
         return;
       }
 
-      setFeaturedProducts(data || []);
+      // Processar produtos para adicionar image_url da primeira imagem se não existir
+      const processedProducts = (data || []).map(product => {
+        if (!product.image_url && product.images && product.images.length > 0) {
+          const sortedImages = [...product.images].sort((a, b) => a.position - b.position);
+          return {
+            ...product,
+            image_url: sortedImages[0].image_url
+          };
+        }
+        return product;
+      });
+
+      setFeaturedProducts(processedProducts);
     } catch (err) {
       console.error('Erro inesperado:', err);
       setError('Erro inesperado ao carregar produtos em destaque');

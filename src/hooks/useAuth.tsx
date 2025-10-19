@@ -42,33 +42,98 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [session, setSession] = useState<Session | null>(null);
   const [profile, setProfile] = useState<Profile | null>(null);
   const [loading, setLoading] = useState(true);
+  const [isFetchingProfile, setIsFetchingProfile] = useState(false);
   const { toast } = useToast();
 
   const fetchProfile = async (userId: string, retryCount = 0) => {
+    // Prevent multiple simultaneous fetches
+    if (isFetchingProfile && retryCount === 0) {
+      console.log('⏸️ Profile fetch already in progress, skipping...');
+      return;
+    }
+
+    setIsFetchingProfile(true);
+
     try {
-      console.log('🔍 Fetching profile for user:', userId, 'retry:', retryCount);
-      const { data, error } = await supabase
+      console.log('🔍 [FETCH PROFILE] Starting for user:', userId, 'retry:', retryCount);
+
+      // STEP 1: Fetch profile data
+      console.log('📝 [STEP 1/2] Fetching from profiles table...');
+      const { data: profileData, error: profileError } = await supabase
         .from('profiles')
         .select('*')
         .eq('id', userId)
         .single();
 
-      if (error) {
-        console.error('❌ Profile fetch error:', error);
-        throw error;
+      if (profileError) {
+        console.error('❌ Profile fetch error:', profileError);
+        throw profileError;
       }
-      
-      console.log('✅ Profile fetched successfully:', data);
-      setProfile(data);
+
+      console.log('✅ Profile data fetched:', profileData);
+
+      // STEP 2: Fetch user role from user_roles table with retry
+      console.log('🔐 [STEP 2/2] Fetching role from user_roles table...');
+
+      let roleData = null;
+      let roleError = null;
+      let roleRetryCount = 0;
+      const maxRoleRetries = 3;
+
+      while (roleRetryCount < maxRoleRetries) {
+        const { data, error } = await supabase
+          .from('user_roles')
+          .select('role')
+          .eq('user_id', userId)
+          .single();
+
+        if (!error) {
+          roleData = data;
+          roleError = null;
+          break;
+        }
+
+        roleError = error;
+        roleRetryCount++;
+
+        if (roleRetryCount < maxRoleRetries) {
+          console.warn(`⚠️ Role fetch attempt ${roleRetryCount} failed, retrying in ${roleRetryCount * 500}ms...`, error);
+          await new Promise(resolve => setTimeout(resolve, roleRetryCount * 500));
+        }
+      }
+
+      if (roleError) {
+        console.error('❌ Role fetch failed after', maxRoleRetries, 'attempts:', roleError);
+        console.warn('⚠️ Using default role "user"');
+      }
+
+      const userRole = roleData?.role || 'user';
+      console.log('✅ Final user role:', userRole);
+
+      // STEP 3: Combine profile with role
+      const completeProfile = {
+        ...profileData,
+        role: userRole
+      };
+
+      console.log('✅ ========================================');
+      console.log('✅ COMPLETE PROFILE WITH ROLE:');
+      console.log('✅', JSON.stringify(completeProfile, null, 2));
+      console.log('✅ ========================================');
+
+      setProfile(completeProfile);
+      setIsFetchingProfile(false);
     } catch (error) {
       console.error('❌ Error fetching profile:', error);
-      
-      // Retry logic - try up to 3 times
+
+      // Retry logic - try up to 3 times for profile fetch
       if (retryCount < 2) {
-        console.log('🔄 Retrying profile fetch...');
+        const delay = 1000 * (retryCount + 1);
+        console.log(`🔄 Retrying entire profile fetch in ${delay}ms... (attempt ${retryCount + 1}/3)`);
+        setIsFetchingProfile(false);
         setTimeout(() => {
           fetchProfile(userId, retryCount + 1);
-        }, 1000 * (retryCount + 1)); // Exponential backoff
+        }, delay);
       } else {
         console.error('💥 Max retries reached for profile fetch');
         // Set a minimal profile to prevent infinite loading
@@ -81,46 +146,66 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
           bio: null,
           role: 'user' // Default role
         });
+        setIsFetchingProfile(false);
       }
     }
   };
 
   useEffect(() => {
-    console.log('🚀 Setting up auth state listener');
-    
-    // Set up auth state listener
+    console.log('🚀 [INIT] Setting up auth state listener');
+
+    let isInitialLoad = true;
+
+    // Get initial session FIRST (before setting up listener)
+    console.log('🔍 [INIT] Checking for existing session...');
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      console.log('📋 [INIT] Initial session check:', session?.user?.email || 'No session');
+      setSession(session);
+      setUser(session?.user ?? null);
+
+      if (session?.user) {
+        console.log('👤 [INIT] User found, fetching profile...');
+        fetchProfile(session.user.id);
+      } else {
+        console.log('👤 [INIT] No user found');
+        setProfile(null);
+      }
+
+      setLoading(false);
+      isInitialLoad = false;
+    });
+
+    // Set up auth state listener for future changes
     const { data: { subscription } } = supabase.auth.onAuthStateChange(
       (event, session) => {
-        console.log('🔄 Auth state change:', event, 'User:', session?.user?.email);
+        console.log('🔄 [AUTH CHANGE] Event:', event, 'User:', session?.user?.email);
+
+        // Skip if this is the initial SIGNED_IN event (already handled above)
+        if (isInitialLoad && event === 'INITIAL_SESSION') {
+          console.log('⏭️ [AUTH CHANGE] Skipping initial session (already processed)');
+          return;
+        }
+
         setSession(session);
         setUser(session?.user ?? null);
-        
+
         if (session?.user) {
-          // Use setTimeout to prevent potential deadlocks
-          setTimeout(() => {
-            fetchProfile(session.user.id);
-          }, 100);
+          console.log('👤 [AUTH CHANGE] User authenticated, fetching profile...');
+          fetchProfile(session.user.id);
         } else {
-          console.log('👤 No user, clearing profile');
+          console.log('👤 [AUTH CHANGE] User logged out, clearing profile');
           setProfile(null);
+          setIsFetchingProfile(false);
         }
+
         setLoading(false);
       }
     );
 
-    // Get initial session
-    console.log('🔍 Checking for existing session');
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      console.log('📋 Initial session check:', session?.user?.email || 'No session');
-      setSession(session);
-      setUser(session?.user ?? null);
-      if (session?.user) {
-        fetchProfile(session.user.id);
-      }
-      setLoading(false);
-    });
-
-    return () => subscription.unsubscribe();
+    return () => {
+      console.log('🔌 [CLEANUP] Unsubscribing from auth listener');
+      subscription.unsubscribe();
+    };
   }, []);
 
   const signIn = async (email: string, password: string) => {

@@ -1,0 +1,333 @@
+WHERE name ILIKE 'Crepe duna marinho';
+
+UPDATE products SET
+  description = '100% poliéster. 1.50m de largura. $11,90 o metro',
+  price = 11.9,
+  width = '1.50m',
+  material = '100% poliéster'
+WHERE name ILIKE 'Crepe duna rosa';
+
+UPDATE products SET
+  description = '100% poliéster. 1.50m de largura. $11,90 o metro',
+  price = 11.9,
+  width = '1.50m',
+  material = '100% poliéster'
+WHERE name ILIKE 'Crepe duna vermelho';
+
+UPDATE products SET
+  description = '100% poliéster. 1.50m de largura. $11,90 o metro',
+  price = 11.9,
+  width = '1.50m',
+  material = '100% poliéster'
+WHERE name ILIKE 'Crepe duna branco';
+
+UPDATE products SET
+  description = '100% poliéster. 1.50m de largura. $11,90 o metro',
+  price = 11.9,
+  width = '1.50m',
+  material = '100% poliéster'
+WHERE name ILIKE 'Crepe duna amarelo claro';
+
+UPDATE products SET
+  description = '100% poliéster. 1.50m de largura. $11,90 o metro',
+  price = 11.9,
+  width = '1.50m',
+  material = '100% poliéster'
+WHERE name ILIKE 'Crepe duna verde limão';
+
+UPDATE products SET
+  description = '100% poliéster. 1.30m de largura. $49,90 o metro',
+  price = 49.9,
+  width = '1.30m',
+  material = '100% poliéster'
+WHERE name ILIKE 'Renda guipir branca';
+
+UPDATE products SET
+  description = '100% poliéster. 1.30m de largura. $49,90 o metro',
+  price = 49.9,
+  width = '1.30m',
+  material = '100% poliéster'
+WHERE name ILIKE 'Renda guipir branca';
+
+UPDATE products SET
+  description = '100% poliéster. 1.50m de largura. $5,90 o metro',
+  price = 5.9,
+  width = '1.50m',
+  material = '100% poliéster'
+WHERE name ILIKE 'Cetim rosa bebê';
+
+UPDATE products SET
+  description = '100% poliéster. 1.50m de largura. $5,90 o metro',
+  price = 5.9,
+  width = '1.50m',
+  material = '100% poliéster'
+WHERE name ILIKE 'Cetim cinza chumbo';
+
+UPDATE products SET
+  description = '100% poliéster. 1.50m de largura. $5,90 o metro',
+  price = 5.9,
+  width = '1.50m',
+  material = '100% poliéster'
+WHERE name ILIKE 'Cetim cinza claro';
+
+UPDATE products SET
+  description = '100% poliéster. 1.50m de largura. $5,90 o metro',
+  price = 5.9,
+  width = '1.50m',
+  material = '100% poliéster'
+WHERE name ILIKE 'Cetim roxo';
+
+UPDATE products SET
+  description = '100% poliéster. 1.50m de largura. $5,90 o metro',
+  price = 5.9,
+  width = '1.50m',
+  material = '100% poliéster'
+WHERE name ILIKE 'Cetim preto';
+
+UPDATE products SET
+  description = '100% poliéster. 1.50m de largura. $5,90 o metro',
+  price = 5.9,
+  width = '1.50m',
+  material = '100% poliéster'
+WHERE name ILIKE 'Cetim branco';
+
+UPDATE products SET
+  description = '100% poliéster. 1.50m de largura. $5,90 o metro',
+  price = 5.9,
+  width = '1.50m',
+  material = '100% poliéster'
+WHERE name ILIKE 'Cetim pink';
+
+UPDATE products SET
+  description = '100% poliéster. 1.50m de largura. $5,90 o metro',
+  price = 5.9,
+  width = '1.50m',
+  material = '100% poliéster'
+WHERE name ILIKE 'Cetim vermelho';
+
+UPDATE products SET
+  description = '100% poliéster. 1.50m de largura. $5,90 o metro',
+  price = 5.9,
+  width = '1.50m',
+  material = '100% poliéster'
+WHERE name ILIKE 'Cetim azul bebê';
+
+UPDATE products SET
+  description = '100% poliéster. 1.50m de largura. $5,90 o metro',
+  price = 5.9,
+  width = '1.50m',
+  material = '100% poliéster'
+WHERE name ILIKE 'Cetim amarelo ouro';
+
+UPDATE products SET
+  description = '100% poliéster. 1.50m de largura. $5,90 o metro',
+  price = 5.9,
+  width = '1.50m',
+  material = '100% poliéster'
+WHERE name ILIKE 'Cetim creme';
+
+UPDATE products SET
+  description = '100% poliéster. 1.50m de largura. $5,90 o metro',
+  price = 5.9,
+  width = '1.50m',
+  material = '100% poliéster'
+WHERE name ILIKE 'Cetim laranja';
+
+UPDATE products SET
+  description = '100% poliéster. 1.50m de largura. $5,90 o metro',
+  price = 5.9,
+  width = '1.50m',
+  material = '100% poliéster'
+WHERE name ILIKE 'Cetim amarelo claro';
+
+UPDATE products SET
+  description = '100% poliéster. 1.50m de largura. $5,90 o metro',
+  price = 5.9,
+  width = '1.50m',
+  material = '100% poliéster'
+WHERE name ILIKE 'Cetim bege';
+
+UPDATE products SET
+  description = '100% poliéster. 1.50m de largura. $5,90 o metro',
+  price = 5.9,
+  width = '1.50m',
+  material = '100% poliéster'
+WHERE name ILIKE 'Cetim vinho';
+
+UPDATE products SET
+  description = '100% poliéster. 1.50m de largura. $5,90 o metro',
+  price = 5.9,
+  width = '1.50m',
+  material = '100% poliéster'
+WHERE name ILIKE 'Cetim marinho';
+
+UPDATE products SET
+  description = '100% poliéster. 1.50m de largura. $5,90 o metro',
+  price = 5.9,
+  width = '1.50m',
+  material = '100% poliéster'
+WHERE name ILIKE 'Cetim rosé';
+
+UPDATE products SET
+  description = '100% poliéster. 1.50m de largura. $5,90 o metro',
+  price = 5.9,
+  width = '1.50m',
+  material = '100% poliéster'
+WHERE name ILIKE 'Cetim verde água';
+
+UPDATE products SET
+  description = '100% poliéster. 1.50m de largura. $5,90 o metro',
+  price = 5.9,
+  width = '1.50m',
+  material = '100% poliéster'
+WHERE name ILIKE 'Cetim verde bandeira';
+
+UPDATE products SET
+  description = '100% poliéster. 1.50m de largura. $5,90 o metro',
+  price = 5.9,
+  width = '1.50m',
+  material = '100% poliéster'
+WHERE name ILIKE 'Cetim verde petróleo';
+
+UPDATE products SET
+  description = '100% poliéster. 1.80m de largura. $9,90 o metro',
+  price = 9.9,
+  width = '1.80m',
+  material = '100% poliéster'
+WHERE name ILIKE 'Helanca light/ helanquinha amarelo bebê';
+
+UPDATE products SET
+  description = '100% poliéster. 1.80m de largura. $9,90 o metro',
+  price = 9.9,
+  width = '1.80m',
+  material = '100% poliéster'
+WHERE name ILIKE 'Helanca light/ helanquinha marrom';
+
+UPDATE products SET
+  description = '100% poliéster. 1.80m de largura. $9,90 o metro',
+  price = 9.9,
+  width = '1.80m',
+  material = '100% poliéster'
+WHERE name ILIKE 'Helanca light/ helanquinha roxo';
+
+UPDATE products SET
+  description = '100% poliéster. 1.80m de largura. $9,90 o metro',
+  price = 9.9,
+  width = '1.80m',
+  material = '100% poliéster'
+WHERE name ILIKE 'Helanca light/ helanquinha verde claro';
+
+UPDATE products SET
+  description = '100% poliéster. 1.80m de largura. $9,90 o metro',
+  price = 9.9,
+  width = '1.80m',
+  material = '100% poliéster'
+WHERE name ILIKE 'Helanca light/ helanquinha azul petróleo';
+
+UPDATE products SET
+  description = '100% poliéster. 1.80m de largura. $9,90 o metro',
+  price = 9.9,
+  width = '1.80m',
+  material = '100% poliéster'
+WHERE name ILIKE 'Helanca light/ helanquinha marinho';
+
+UPDATE products SET
+  description = '100% poliéster. 1.80m de largura. $9,90 o metro',
+  price = 9.9,
+  width = '1.80m',
+  material = '100% poliéster'
+WHERE name ILIKE 'Helanca light/ helanquinha terracota';
+
+UPDATE products SET
+  description = '100% poliéster. 1.80m de largura. $9,90 o metro',
+  price = 9.9,
+  width = '1.80m',
+  material = '100% poliéster'
+WHERE name ILIKE 'Helanca light/ helanquinha marsala';
+
+UPDATE products SET
+  description = '100% poliéster. 1.80m de largura. $9,90 o metro',
+  price = 9.9,
+  width = '1.80m',
+  material = '100% poliéster'
+WHERE name ILIKE 'Helanca light/ helanquinha mostarda';
+
+UPDATE products SET
+  description = '100% poliéster. 1.80m de largura. $9,90 o metro',
+  price = 9.9,
+  width = '1.80m',
+  material = '100% poliéster'
+WHERE name ILIKE 'Helanca light/ helanquinha branco';
+
+UPDATE products SET
+  description = '100% poliéster. 1.80m de largura. $9,90 o metro',
+  price = 9.9,
+  width = '1.80m',
+  material = '100% poliéster'
+WHERE name ILIKE 'Helanca light/ helanquinha laranja';
+
+UPDATE products SET
+  description = '100% poliéster. 1.80m de largura. $9,90 o metro',
+  price = 9.9,
+  width = '1.80m',
+  material = '100% poliéster'
+WHERE name ILIKE 'Helanca light/ helanquinha lilás';
+
+UPDATE products SET
+  description = '100% poliéster. 1.80m de largura. $9,90 o metro',
+  price = 9.9,
+  width = '1.80m',
+  material = '100% poliéster'
+WHERE name ILIKE 'Helanca light/ helanquinha verde bandeira';
+
+UPDATE products SET
+  description = '100% poliéster. 1.80m de largura. $9,90 o metro',
+  price = 9.9,
+  width = '1.80m',
+  material = '100% poliéster'
+WHERE name ILIKE 'Helanca light/ helanquinha verde musgo';
+
+UPDATE products SET
+  description = '100% poliéster. 1.80m de largura. $9,90 o metro',
+  price = 9.9,
+  width = '1.80m',
+  material = '100% poliéster'
+WHERE name ILIKE 'Helanca light/ helanquinha preto';
+
+UPDATE products SET
+  description = '100% poliéster. 1.80m de largura. $9,90 o metro',
+  price = 9.9,
+  width = '1.80m',
+  material = '100% poliéster'
+WHERE name ILIKE 'Helanca light/ helanquinha azul bebê';
+
+UPDATE products SET
+  description = '100% poliéster. 1.80m de largura. $9,90 o metro',
+  price = 9.9,
+  width = '1.80m',
+  material = '100% poliéster'
+WHERE name ILIKE 'Helanca light/ helanquinha cinza chumbo';
+
+UPDATE products SET
+  description = '100% poliéster. 1.50m de largura. $7,90 o metro',
+  price = 7.9,
+  width = '1.50m',
+  material = '100% poliéster'
+WHERE name ILIKE 'Oxford pink';
+
+UPDATE products SET
+  description = '100% poliéster. 1.50m de largura. $7,90 o metro',
+  price = 7.9,
+  width = '1.50m',
+  material = '100% poliéster'
+WHERE name ILIKE 'Oxford branco';
+
+UPDATE products SET
+  description = '100% poliéster. 1.50m de largura. $7,90 o metro',
+  price = 7.9,
+  width = '1.50m',
+  material = '100% poliéster'
+WHERE name ILIKE 'Oxford vermelho';
+
+UPDATE products SET
+  description = '100% poliéster. 1.50m de largura. $7,90 o metro',

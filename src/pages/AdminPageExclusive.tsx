@@ -30,8 +30,15 @@ const AdminPageExclusive = () => {
     );
   }
 
-  // Verificação de acesso exclusiva
-  if (!user || profile?.email !== 'tecidosleticia@gmail.com') {
+  // Verificação de acesso baseada em role
+  console.log('🔐 AdminPageExclusive - Access check:', {
+    hasUser: !!user,
+    userEmail: user?.email,
+    profileRole: profile?.role,
+    isAdmin: profile?.role === 'admin'
+  });
+
+  if (!user || profile?.role !== 'admin') {
     return (
       <div className="min-h-screen bg-gray-50">
         <Header />
@@ -41,9 +48,17 @@ const AdminPageExclusive = () => {
               <Lock className="h-12 w-12 mx-auto text-red-500 mb-4" />
               <h2 className="text-xl font-semibold text-gray-900 mb-2">Acesso Negado</h2>
               <p className="text-gray-600">
-                Você não tem permissão para acessar esta página. 
+                Você não tem permissão para acessar esta página.
                 Apenas administradores podem visualizar o painel administrativo.
               </p>
+              {user && (
+                <div className="mt-4 p-3 bg-gray-100 rounded-lg text-xs text-left">
+                  <p className="font-semibold mb-1">Debug Info:</p>
+                  <p>Email: {user.email}</p>
+                  <p>Role atual: {profile?.role || 'undefined'}</p>
+                  <p>Role necessária: admin</p>
+                </div>
+              )}
             </CardContent>
           </Card>
         </main>

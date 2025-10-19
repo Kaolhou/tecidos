@@ -7,12 +7,14 @@ import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Plus, Search, Edit, Trash2, AlertTriangle, Package, Upload } from 'lucide-react';
+import { Plus, Search, Edit, Trash2, AlertTriangle, Package, Upload, FileUp, FileJson } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import { cleanProductNameForAdmin } from '@/utils/adminUtils';
 import ProductCreateEditModal from './ProductCreateEditModal';
 import StockManagement from './StockManagement';
 import BulkImageUpload from './BulkImageUpload';
+import BulkImport from './BulkImport';
+import JsonProcessor from './JsonProcessor';
 
 interface Product {
   id: string;
@@ -31,6 +33,7 @@ const AdminProductsManagement = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [categoryFilter, setCategoryFilter] = useState('all');
   const [stockFilter, setStockFilter] = useState('all');
+  const [imageFilter, setImageFilter] = useState('all');
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isCreateMode, setIsCreateMode] = useState(false);
@@ -38,7 +41,7 @@ const AdminProductsManagement = () => {
   const queryClient = useQueryClient();
 
   const { data: products, isLoading } = useQuery({
-    queryKey: ['admin-products', searchTerm, categoryFilter, stockFilter],
+    queryKey: ['admin-products', searchTerm, categoryFilter, stockFilter, imageFilter],
     queryFn: async () => {
       let query = supabase.from('products').select('*').order('created_at', { ascending: false });
 
@@ -53,9 +56,16 @@ const AdminProductsManagement = () => {
       const { data, error } = await query;
       if (error) throw error;
 
-      // Filtrar produtos sem imagem
-      let filteredData = data.filter(product => product.image_url && product.image_url.trim() !== '');
-      
+      let filteredData = data || [];
+
+      // Filtrar por imagem
+      if (imageFilter === 'without') {
+        filteredData = filteredData.filter(product => !product.image_url || product.image_url.trim() === '');
+      } else if (imageFilter === 'with') {
+        filteredData = filteredData.filter(product => product.image_url && product.image_url.trim() !== '');
+      }
+
+      // Filtrar por estoque
       if (stockFilter === 'low') {
         filteredData = filteredData.filter(product => product.stock_quantity <= 5);
       } else if (stockFilter === 'out') {
@@ -162,9 +172,17 @@ const AdminProductsManagement = () => {
         <TabsList>
           <TabsTrigger value="products">Produtos</TabsTrigger>
           <TabsTrigger value="stock">Controle de Estoque</TabsTrigger>
+          <TabsTrigger value="json-processor" className="flex items-center gap-2">
+            <FileJson className="h-4 w-4" />
+            Processar JSON
+          </TabsTrigger>
           <TabsTrigger value="upload" className="flex items-center gap-2">
             <Upload className="h-4 w-4" />
             Upload de Imagens
+          </TabsTrigger>
+          <TabsTrigger value="bulk-import" className="flex items-center gap-2">
+            <FileUp className="h-4 w-4" />
+            Importação em Massa
           </TabsTrigger>
         </TabsList>
 
@@ -172,7 +190,7 @@ const AdminProductsManagement = () => {
           {/* Filtros */}
           <Card>
             <CardContent className="p-6">
-              <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
                 <div className="relative">
                   <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
                   <Input
@@ -182,7 +200,7 @@ const AdminProductsManagement = () => {
                     className="pl-10"
                   />
                 </div>
-                
+
                 <Select value={categoryFilter} onValueChange={setCategoryFilter}>
                   <SelectTrigger>
                     <SelectValue placeholder="Categoria" />
@@ -194,6 +212,17 @@ const AdminProductsManagement = () => {
                         {category.name}
                       </SelectItem>
                     ))}
+                  </SelectContent>
+                </Select>
+
+                <Select value={imageFilter} onValueChange={setImageFilter}>
+                  <SelectTrigger>
+                    <SelectValue placeholder="Imagens" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="all">Todas</SelectItem>
+                    <SelectItem value="with">Com imagem</SelectItem>
+                    <SelectItem value="without">Sem imagem</SelectItem>
                   </SelectContent>
                 </Select>
 
@@ -247,11 +276,16 @@ const AdminProductsManagement = () => {
                             </p>
                           </div>
                           
-                          <div className="flex items-center space-x-4 text-sm">
+                          <div className="flex items-center space-x-4 text-sm flex-wrap gap-2">
                             <span><strong>Preço:</strong> {formatPrice(product.price)}</span>
                             <span><strong>Material:</strong> {product.material}</span>
                             <span><strong>Largura:</strong> {product.width}</span>
                             <Badge variant="outline">{product.category}</Badge>
+                            {(!product.image_url || product.image_url.trim() === '') && (
+                              <Badge variant="destructive" className="bg-orange-500 hover:bg-orange-600">
+                                Sem Imagem
+                              </Badge>
+                            )}
                           </div>
                         </div>
                       </div>
@@ -316,8 +350,12 @@ const AdminProductsManagement = () => {
           <StockManagement />
         </TabsContent>
 
+        <TabsContent value="json-processor">
+          <JsonProcessor />
+        </TabsContent>
+
         <TabsContent value="upload">
-          <BulkImageUpload 
+          <BulkImageUpload
             products={products || []}
             onComplete={() => {
               queryClient.invalidateQueries({ queryKey: ['admin-products'] });
@@ -327,6 +365,10 @@ const AdminProductsManagement = () => {
               });
             }}
           />
+        </TabsContent>
+
+        <TabsContent value="bulk-import">
+          <BulkImport />
         </TabsContent>
       </Tabs>
 

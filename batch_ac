@@ -1,0 +1,333 @@
+  description = '100% poliéster. 1.30m de largura. $49,90 o metro (forro vendido separadamente)',
+  price = 49.9,
+  width = '1.30m',
+  material = '100% poliéster'
+WHERE name ILIKE 'Tule bordado com flores 3d terracota';
+
+UPDATE products SET
+  description = '100% poliéster. 1.30m de largura. $49,90 o metro (forro vendido separadamente)',
+  price = 49.9,
+  width = '1.30m',
+  material = '100% poliéster'
+WHERE name ILIKE 'Tule bordado com flores 3d azul bebê';
+
+UPDATE products SET
+  description = '100% poliéster. 1.30m de largura. $49,90 o metro (forro vendido separadamente)',
+  price = 49.9,
+  width = '1.30m',
+  material = '100% poliéster'
+WHERE name ILIKE 'Tule bordado com flores 3d lilás';
+
+UPDATE products SET
+  description = '100% poliéster. 1.30m de largura. $49,90 o metro (forro vendido separadamente)',
+  price = 49.9,
+  width = '1.30m',
+  material = '100% poliéster'
+WHERE name ILIKE 'Tule bordado com flores 3d vermelho';
+
+UPDATE products SET
+  description = '100% poliéster. 1.30m de largura. $49,90 o metro (forro vendido separadamente)',
+  price = 49.9,
+  width = '1.30m',
+  material = '100% poliéster'
+WHERE name ILIKE 'Tule bordado com flores 3d preto';
+
+UPDATE products SET
+  description = '100% poliéster. 1.30m de largura. $49,90 o metro (forro vendido separadamente)',
+  price = 49.9,
+  width = '1.30m',
+  material = '100% poliéster'
+WHERE name ILIKE 'Tule bordado com flores 3d rosa bebê';
+
+UPDATE products SET
+  description = '100% poliéster. 1.50m de largura. $17,90 o metro',
+  price = 17.9,
+  width = '1.50m',
+  material = '100% poliéster'
+WHERE name ILIKE 'Crepe Amanda serenity';
+
+UPDATE products SET
+  description = '100% poliéster. 1.50m de largura. $17,90 o metro',
+  price = 17.9,
+  width = '1.50m',
+  material = '100% poliéster'
+WHERE name ILIKE 'Crepe Amanda azul turquesa';
+
+UPDATE products SET
+  description = '100% poliéster. 1.50m de largura. $17,90 o metro',
+  price = 17.9,
+  width = '1.50m',
+  material = '100% poliéster'
+WHERE name ILIKE 'Crepe Amanda petróleo';
+
+UPDATE products SET
+  description = '100% poliéster. 1.50m de largura. $17,90 o metro',
+  price = 17.9,
+  width = '1.50m',
+  material = '100% poliéster'
+WHERE name ILIKE 'Crepe Amanda terracota';
+
+UPDATE products SET
+  description = '100% poliéster. 1.50m de largura. $17,90 o metro',
+  price = 17.9,
+  width = '1.50m',
+  material = '100% poliéster'
+WHERE name ILIKE 'Crepe Amanda rose';
+
+UPDATE products SET
+  description = '100% poliéster. 1.50m de largura. $17,90 o metro',
+  price = 17.9,
+  width = '1.50m',
+  material = '100% poliéster'
+WHERE name ILIKE 'Crepe Amanda coral';
+
+UPDATE products SET
+  description = '100% poliéster. 1.50m de largura. $17,90 o metro',
+  price = 17.9,
+  width = '1.50m',
+  material = '100% poliéster'
+WHERE name ILIKE 'Crepe Amanda verde bandeira';
+
+UPDATE products SET
+  description = '100% poliéster. 1.50m de largura. $17,90 o metro',
+  price = 17.9,
+  width = '1.50m',
+  material = '100% poliéster'
+WHERE name ILIKE 'Crepe Amanda marrom';
+
+UPDATE products SET
+  description = '100% poliéster. 1.50m de largura. $17,90 o metro',
+  price = 17.9,
+  width = '1.50m',
+  material = '100% poliéster'
+WHERE name ILIKE 'Crepe Amanda marsala';
+
+UPDATE products SET
+  description = '100% poliéster. 1.50m de largura. $17,90 o metro',
+  price = 17.9,
+  width = '1.50m',
+  material = '100% poliéster'
+WHERE name ILIKE 'Crepe Amanda laranja';
+
+UPDATE products SET
+  description = '100% poliéster. 1.50m de largura. $17,90 o metro',
+  price = 17.9,
+  width = '1.50m',
+  material = '100% poliéster'
+WHERE name ILIKE 'Crepe Amanda magenta';
+
+UPDATE products SET
+  description = '100% poliéster. 1.50m de largura. $17,90 o metro',
+  price = 17.9,
+  width = '1.50m',
+  material = '100% poliéster'
+WHERE name ILIKE 'Crepe Amanda marinho';
+
+UPDATE products SET
+  description = '100% poliéster. 1.50m de largura. $17,90 o metro',
+  price = 17.9,
+  width = '1.50m',
+  material = '100% poliéster'
+WHERE name ILIKE 'Crepe Amanda dourado';
+
+UPDATE products SET
+  description = '100% poliéster. 1.50m de largura. $17,90 o metro',
+  price = 17.9,
+  width = '1.50m',
+  material = '100% poliéster'
+WHERE name ILIKE 'Crepe Amanda vermelho';
+
+UPDATE products SET
+  description = '100% poliéster. 1.50m de largura. $17,90 o metro',
+  price = 17.9,
+  width = '1.50m',
+  material = '100% poliéster'
+WHERE name ILIKE 'Crepe Amanda mostarda';
+
+UPDATE products SET
+  description = '100% poliéster. 1.50m de largura. $17,90 o metro',
+  price = 17.9,
+  width = '1.50m',
+  material = '100% poliéster'
+WHERE name ILIKE 'Crepe Amanda branco';
+
+UPDATE products SET
+  description = '100% poliéster. 1.50m de largura. $17,90 o metro',
+  price = 17.9,
+  width = '1.50m',
+  material = '100% poliéster'
+WHERE name ILIKE 'Crepe Amanda pink';
+
+UPDATE products SET
+  description = '100% poliéster. 1.50m de largura. $17,90 o metro',
+  price = 17.9,
+  width = '1.50m',
+  material = '100% poliéster'
+WHERE name ILIKE 'Crepe Amanda verde tiffany';
+
+UPDATE products SET
+  description = '100% poliéster. 1.50m de largura. $17,90 o metro',
+  price = 17.9,
+  width = '1.50m',
+  material = '100% poliéster'
+WHERE name ILIKE 'Crepe Amanda amarelo claro';
+
+UPDATE products SET
+  description = '100% poliéster. 1.50m de largura. $17,90 o metro',
+  price = 17.9,
+  width = '1.50m',
+  material = '100% poliéster'
+WHERE name ILIKE 'Crepe Amanda rosa';
+
+UPDATE products SET
+  description = '100% poliéster. 1.50m de largura. $17,90 o metro',
+  price = 17.9,
+  width = '1.50m',
+  material = '100% poliéster'
+WHERE name ILIKE 'Crepe Amanda preto';
+
+UPDATE products SET
+  description = '100% poliéster. 1.50m de largura. $21,90 o metro',
+  price = 21.9,
+  width = '1.50m',
+  material = '100% poliéster'
+WHERE name ILIKE 'Zibeline marsala';
+
+UPDATE products SET
+  description = '100% poliéster. 1.50m de largura. $21,90 o metro',
+  price = 21.9,
+  width = '1.50m',
+  material = '100% poliéster'
+WHERE name ILIKE 'Zibeline preto';
+
+UPDATE products SET
+  description = '100% poliéster. 1.50m de largura. $21,90 o metro',
+  price = 21.9,
+  width = '1.50m',
+  material = '100% poliéster'
+WHERE name ILIKE 'Zibeline off white';
+
+UPDATE products SET
+  description = '100% poliéster. 1.50m de largura. $21,90 o metro',
+  price = 21.9,
+  width = '1.50m',
+  material = '100% poliéster'
+WHERE name ILIKE 'Zibeline fúcsia';
+
+UPDATE products SET
+  description = '100% poliéster. 1.50m de largura. $21,90 o metro',
+  price = 21.9,
+  width = '1.50m',
+  material = '100% poliéster'
+WHERE name ILIKE 'Zibeline marinho';
+
+UPDATE products SET
+  description = '100% poliéster. 1.50m de largura. $21,90 o metro',
+  price = 21.9,
+  width = '1.50m',
+  material = '100% poliéster'
+WHERE name ILIKE 'Zibeline vermelho';
+
+UPDATE products SET
+  description = '100% poliéster. 1.50m de largura. $21,90 o metro',
+  price = 21.9,
+  width = '1.50m',
+  material = '100% poliéster'
+WHERE name ILIKE 'Zibeline rose';
+
+UPDATE products SET
+  description = '100% poliéster. 1.50m de largura. $21,90 o metro',
+  price = 21.9,
+  width = '1.50m',
+  material = '100% poliéster'
+WHERE name ILIKE 'Zibeline azul serenity';
+
+UPDATE products SET
+  description = '100% poliéster. 1.50m de largura. $21,90 o metro',
+  price = 21.9,
+  width = '1.50m',
+  material = '100% poliéster'
+WHERE name ILIKE 'Zibeline verde oliva';
+
+UPDATE products SET
+  description = '100% poliéster. 1.50m de largura. $21,90 o metro',
+  price = 21.9,
+  width = '1.50m',
+  material = '100% poliéster'
+WHERE name ILIKE 'Zibeline marrom';
+
+UPDATE products SET
+  description = '100% poliéster. 1.50m de largura. $21,90 o metro',
+  price = 21.9,
+  width = '1.50m',
+  material = '100% poliéster'
+WHERE name ILIKE 'Zibeline terracota';
+
+UPDATE products SET
+  description = '100% poliéster. 1.50m de largura. $21,90 o metro',
+  price = 21.9,
+  width = '1.50m',
+  material = '100% poliéster'
+WHERE name ILIKE 'Zibeline azul royal';
+
+UPDATE products SET
+  description = '100% poliéster. 1.50m de largura. $11,90 o metro',
+  price = 11.9,
+  width = '1.50m',
+  material = '100% poliéster'
+WHERE name ILIKE 'Crepe duna preto';
+
+UPDATE products SET
+  description = '100% poliéster. 1.50m de largura. $11,90 o metro',
+  price = 11.9,
+  width = '1.50m',
+  material = '100% poliéster'
+WHERE name ILIKE 'Crepe duna verde bandeira';
+
+UPDATE products SET
+  description = '100% poliéster. 1.50m de largura. $11,90 o metro',
+  price = 11.9,
+  width = '1.50m',
+  material = '100% poliéster'
+WHERE name ILIKE 'Crepe duna laranja';
+
+UPDATE products SET
+  description = '100% poliéster. 1.50m de largura. $11,90 o metro',
+  price = 11.9,
+  width = '1.50m',
+  material = '100% poliéster'
+WHERE name ILIKE 'Crepe duna azul bebê';
+
+UPDATE products SET
+  description = '100% poliéster. 1.50m de largura. $11,90 o metro',
+  price = 11.9,
+  width = '1.50m',
+  material = '100% poliéster'
+WHERE name ILIKE 'Crepe duna amarelo ouro';
+
+UPDATE products SET
+  description = '100% poliéster. 1.50m de largura. $11,90 o metro',
+  price = 11.9,
+  width = '1.50m',
+  material = '100% poliéster'
+WHERE name ILIKE 'Crepe duna creme';
+
+UPDATE products SET
+  description = '100% poliéster. 1.50m de largura. $11,90 o metro',
+  price = 11.9,
+  width = '1.50m',
+  material = '100% poliéster'
+WHERE name ILIKE 'Crepe duna marrom';
+
+UPDATE products SET
+  description = '100% poliéster. 1.50m de largura. $11,90 o metro',
+  price = 11.9,
+  width = '1.50m',
+  material = '100% poliéster'
+WHERE name ILIKE 'Crepe duna lilás';
+
+UPDATE products SET
+  description = '100% poliéster. 1.50m de largura. $11,90 o metro',
+  price = 11.9,
+  width = '1.50m',
+  material = '100% poliéster'
