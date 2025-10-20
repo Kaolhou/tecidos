@@ -1,12 +1,15 @@
 
+import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import heroImage from "@/assets/hero-weaving-loom.jpg";
 
 const HeroSection = () => {
+  const navigate = useNavigate();
+
   return (
     <section id="inicio" className="relative min-h-screen flex items-center">
       {/* Background Image */}
-      <div 
+      <div
         className="absolute inset-0 z-0"
         style={{
           backgroundImage: `url(${heroImage})`,
@@ -25,24 +28,18 @@ const HeroSection = () => {
             Cada tecido tem uma{" "}
             <span className="antracite-accent block">história</span>
           </h1>
-          
+
           <p className="text-xl md:text-2xl mb-8 opacity-90 animate-slide-up font-light">
             Descubra o toque que transforma ambientes em experiências únicas
           </p>
-          
+
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-slide-up">
-            <Button 
-              size="lg" 
+            <Button
+              size="lg"
+              onClick={() => navigate('/produtos')}
               className="bg-antracite-500 hover:bg-antracite-600 text-white font-semibold px-8 py-3 rounded-full transition-all duration-300 hover:scale-105"
             >
-              Explorar Coleções
-            </Button>
-            <Button 
-              variant="outline" 
-              size="lg"
-              className="border-antracite-300 text-antracite-100 bg-antracite-800/20 hover:bg-antracite-600 hover:text-white hover:border-antracite-600 px-8 py-3 rounded-full transition-all duration-300"
-            >
-              Conheça Nossa História
+              Ver Todos os Produtos
             </Button>
           </div>
         </div>

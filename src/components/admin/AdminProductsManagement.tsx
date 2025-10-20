@@ -7,7 +7,7 @@ import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Plus, Search, Edit, Trash2, AlertTriangle, Package, Upload, FileUp, FileJson } from 'lucide-react';
+import { Plus, Search, Edit, Trash2, AlertTriangle, Package, Upload, FileUp, FileJson, FolderTree } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import { cleanProductNameForAdmin } from '@/utils/adminUtils';
 import ProductCreateEditModal from './ProductCreateEditModal';
@@ -15,6 +15,7 @@ import StockManagement from './StockManagement';
 import BulkImageUpload from './BulkImageUpload';
 import BulkImport from './BulkImport';
 import JsonProcessor from './JsonProcessor';
+import CategoryManagement from './CategoryManagement';
 
 interface Product {
   id: string;
@@ -157,40 +158,50 @@ const AdminProductsManagement = () => {
 
   return (
     <div className="space-y-6">
-      <div className="flex justify-between items-center">
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div>
-          <h2 className="text-2xl font-bold">Gestão de Produtos</h2>
-          <p className="text-muted-foreground">Gerencie produtos, estoque e preços</p>
+          <h2 className="text-xl md:text-2xl font-bold">Gestão de Produtos</h2>
+          <p className="text-sm md:text-base text-muted-foreground">Gerencie produtos, estoque e preços</p>
         </div>
-        <Button onClick={handleCreateProduct}>
+        <Button onClick={handleCreateProduct} className="w-full sm:w-auto">
           <Plus className="h-4 w-4 mr-2" />
           Novo Produto
         </Button>
       </div>
 
       <Tabs defaultValue="products" className="space-y-6">
-        <TabsList>
-          <TabsTrigger value="products">Produtos</TabsTrigger>
-          <TabsTrigger value="stock">Controle de Estoque</TabsTrigger>
-          <TabsTrigger value="json-processor" className="flex items-center gap-2">
+        <TabsList className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2 h-auto">
+          <TabsTrigger value="products" className="flex items-center justify-center gap-2">
+            <Package className="h-4 w-4" />
+            <span className="hidden sm:inline">Produtos</span>
+          </TabsTrigger>
+          <TabsTrigger value="categories" className="flex items-center justify-center gap-2">
+            <FolderTree className="h-4 w-4" />
+            <span className="hidden sm:inline">Categorias</span>
+          </TabsTrigger>
+          <TabsTrigger value="stock" className="flex items-center justify-center gap-2">
+            <Package className="h-4 w-4" />
+            <span className="hidden sm:inline">Estoque</span>
+          </TabsTrigger>
+          <TabsTrigger value="json-processor" className="flex items-center justify-center gap-2">
             <FileJson className="h-4 w-4" />
-            Processar JSON
+            <span className="hidden sm:inline">JSON</span>
           </TabsTrigger>
-          <TabsTrigger value="upload" className="flex items-center gap-2">
+          <TabsTrigger value="upload" className="flex items-center justify-center gap-2">
             <Upload className="h-4 w-4" />
-            Upload de Imagens
+            <span className="hidden sm:inline">Upload</span>
           </TabsTrigger>
-          <TabsTrigger value="bulk-import" className="flex items-center gap-2">
+          <TabsTrigger value="bulk-import" className="flex items-center justify-center gap-2">
             <FileUp className="h-4 w-4" />
-            Importação em Massa
+            <span className="hidden sm:inline">Importar</span>
           </TabsTrigger>
         </TabsList>
 
         <TabsContent value="products" className="space-y-6">
           {/* Filtros */}
           <Card>
-            <CardContent className="p-6">
-              <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
+            <CardContent className="p-4 md:p-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
                 <div className="relative">
                   <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
                   <Input
@@ -251,10 +262,11 @@ const AdminProductsManagement = () => {
               const stockStatus = getStockStatus(product.stock_quantity);
               return (
                 <Card key={product.id}>
-                  <CardContent className="p-6">
-                    <div className="flex items-start justify-between">
-                      <div className="flex space-x-4">
-                        <div className="w-20 h-20 bg-muted rounded-lg overflow-hidden">
+                  <CardContent className="p-4 md:p-6">
+                    <div className="flex flex-col lg:flex-row items-start gap-4">
+                      {/* Seção esquerda: Imagem + Informações */}
+                      <div className="flex flex-col sm:flex-row gap-4 w-full lg:flex-1">
+                        <div className="w-20 h-20 sm:w-24 sm:h-24 bg-muted rounded-lg overflow-hidden flex-shrink-0">
                           {product.image_url ? (
                             <img
                               src={product.image_url}
@@ -267,22 +279,22 @@ const AdminProductsManagement = () => {
                             </div>
                           )}
                         </div>
-                        
-                        <div className="flex-1 space-y-2">
+
+                        <div className="flex-1 space-y-2 min-w-0">
                           <div>
-                            <h3 className="font-semibold text-lg">{cleanProductNameForAdmin(product.name)}</h3>
-                            <p className="text-muted-foreground line-clamp-2">
+                            <h3 className="font-semibold text-base md:text-lg break-words">{cleanProductNameForAdmin(product.name)}</h3>
+                            <p className="text-sm text-muted-foreground line-clamp-2">
                               {product.description}
                             </p>
                           </div>
-                          
-                          <div className="flex items-center space-x-4 text-sm flex-wrap gap-2">
-                            <span><strong>Preço:</strong> {formatPrice(product.price)}</span>
-                            <span><strong>Material:</strong> {product.material}</span>
-                            <span><strong>Largura:</strong> {product.width}</span>
-                            <Badge variant="outline">{product.category}</Badge>
+
+                          <div className="flex flex-wrap items-center gap-2 text-xs md:text-sm">
+                            <span className="whitespace-nowrap"><strong>Preço:</strong> {formatPrice(product.price)}</span>
+                            <span className="whitespace-nowrap"><strong>Material:</strong> {product.material}</span>
+                            <span className="whitespace-nowrap"><strong>Largura:</strong> {product.width}</span>
+                            <Badge variant="outline" className="whitespace-nowrap">{product.category}</Badge>
                             {(!product.image_url || product.image_url.trim() === '') && (
-                              <Badge variant="destructive" className="bg-orange-500 hover:bg-orange-600">
+                              <Badge variant="destructive" className="bg-orange-500 hover:bg-orange-600 whitespace-nowrap">
                                 Sem Imagem
                               </Badge>
                             )}
@@ -290,26 +302,28 @@ const AdminProductsManagement = () => {
                         </div>
                       </div>
 
-                      <div className="flex items-center space-x-2">
-                        <div className="text-right">
-                          <div className="flex items-center space-x-2">
-                            <Badge variant={stockStatus.color as any}>
+                      {/* Seção direita: Estoque + Botões */}
+                      <div className="flex flex-row sm:flex-col lg:flex-col items-center sm:items-end gap-4 w-full sm:w-auto">
+                        <div className="text-left sm:text-right flex-1 sm:flex-initial">
+                          <div className="flex items-center gap-2 justify-start sm:justify-end">
+                            <Badge variant={stockStatus.color as any} className="whitespace-nowrap">
                               {stockStatus.label}
                             </Badge>
                             {product.stock_quantity <= 5 && (
                               <AlertTriangle className="h-4 w-4 text-orange-500" />
                             )}
                           </div>
-                          <p className="text-sm text-muted-foreground mt-1">
+                          <p className="text-xs md:text-sm text-muted-foreground mt-1">
                             {product.stock_quantity} unidades
                           </p>
                         </div>
-                        
-                        <div className="flex space-x-2">
+
+                        <div className="flex gap-2">
                           <Button
                             variant="outline"
                             size="sm"
                             onClick={() => handleEditProduct(product)}
+                            className="h-9 w-9 p-0"
                           >
                             <Edit className="h-4 w-4" />
                           </Button>
@@ -317,6 +331,7 @@ const AdminProductsManagement = () => {
                             variant="outline"
                             size="sm"
                             onClick={() => handleDeleteProduct(product.id)}
+                            className="h-9 w-9 p-0"
                           >
                             <Trash2 className="h-4 w-4" />
                           </Button>
@@ -344,6 +359,10 @@ const AdminProductsManagement = () => {
               </CardContent>
             </Card>
           )}
+        </TabsContent>
+
+        <TabsContent value="categories">
+          <CategoryManagement />
         </TabsContent>
 
         <TabsContent value="stock">

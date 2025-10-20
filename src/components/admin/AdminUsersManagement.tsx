@@ -216,15 +216,15 @@ const AdminUsersManagement = () => {
     <div className="space-y-6">
       <div className="flex justify-between items-center">
         <div>
-          <h3 className="text-xl font-semibold">Gestão de Usuários</h3>
-          <p className="text-muted-foreground">Gerencie usuários e suas permissões</p>
+          <h3 className="text-lg md:text-xl font-semibold">Gestão de Usuários</h3>
+          <p className="text-sm md:text-base text-muted-foreground">Gerencie usuários e suas permissões</p>
         </div>
       </div>
 
       {/* Filtros */}
       <Card>
-        <CardContent className="p-6">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <CardContent className="p-4 md:p-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             <div className="relative">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
               <Input
@@ -260,60 +260,63 @@ const AdminUsersManagement = () => {
         {users?.map((user) => {
           const role = getUserRole(user);
           const stats = getUserStats(user.id);
-          
+
           return (
             <Card key={user.id}>
-              <CardContent className="p-6">
-                <div className="flex items-start justify-between">
-                  <div className="flex space-x-4">
-                    <div className="w-12 h-12 bg-muted rounded-full flex items-center justify-center">
-                      <User className="h-6 w-6 text-muted-foreground" />
+              <CardContent className="p-4 md:p-6">
+                <div className="flex flex-col lg:flex-row items-start gap-4">
+                  {/* Seção esquerda: Avatar + Informações */}
+                  <div className="flex gap-4 w-full lg:flex-1">
+                    <div className="w-12 h-12 sm:w-14 sm:h-14 bg-muted rounded-full flex items-center justify-center flex-shrink-0">
+                      <User className="h-6 w-6 sm:h-7 sm:w-7 text-muted-foreground" />
                     </div>
-                    
-                    <div className="flex-1 space-y-2">
+
+                    <div className="flex-1 space-y-2 min-w-0">
                       <div>
-                        <h3 className="font-semibold text-lg">{user.name}</h3>
-                        <p className="text-muted-foreground">{user.email}</p>
+                        <h3 className="font-semibold text-base md:text-lg break-words">{user.name}</h3>
+                        <p className="text-sm text-muted-foreground break-all">{user.email}</p>
                       </div>
-                      
-                      <div className="flex items-center space-x-4 text-sm">
-                        <div className="flex items-center space-x-1">
-                          <Calendar className="h-4 w-4" />
+
+                      <div className="flex flex-col sm:flex-row sm:flex-wrap items-start sm:items-center gap-2 sm:gap-4 text-xs md:text-sm">
+                        <div className="flex items-center gap-1 whitespace-nowrap">
+                          <Calendar className="h-3 w-3 sm:h-4 sm:w-4" />
                           <span>Desde {formatDate(new Date(user.created_at), 'dd/MM/yyyy')}</span>
                         </div>
-                        
+
                         {stats && (
                           <>
-                            <div className="flex items-center space-x-1">
-                              <ShoppingBag className="h-4 w-4" />
+                            <div className="flex items-center gap-1 whitespace-nowrap">
+                              <ShoppingBag className="h-3 w-3 sm:h-4 sm:w-4" />
                               <span>{stats.total_orders} pedidos</span>
                             </div>
-                            <span>Total gasto: {formatCurrency(stats.total_spent)}</span>
+                            <span className="whitespace-nowrap">Total: {formatCurrency(stats.total_spent)}</span>
                           </>
                         )}
                       </div>
-                      
+
                       {stats?.last_order && (
-                        <p className="text-sm text-muted-foreground">
+                        <p className="text-xs md:text-sm text-muted-foreground">
                           Último pedido: {formatDate(new Date(stats.last_order), 'dd/MM/yyyy')}
                         </p>
                       )}
                     </div>
                   </div>
 
-                  <div className="flex items-center space-x-2">
-                    <Badge 
+                  {/* Seção direita: Badge + Botão */}
+                  <div className="flex flex-row sm:flex-col lg:flex-col items-center sm:items-end gap-3 w-full sm:w-auto">
+                    <Badge
                       variant={getRoleBadgeVariant(role) as any}
-                      className="flex items-center space-x-1"
+                      className="flex items-center gap-1 whitespace-nowrap"
                     >
                       {getRoleIcon(role)}
                       <span className="capitalize">{role}</span>
                     </Badge>
-                    
+
                     <Button
                       variant="outline"
                       size="sm"
                       onClick={() => openRoleModal(user)}
+                      className="whitespace-nowrap text-xs sm:text-sm"
                     >
                       Alterar Role
                     </Button>

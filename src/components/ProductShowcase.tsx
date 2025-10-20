@@ -7,7 +7,7 @@ import { useFeaturedProducts } from "@/hooks/useProducts";
 
 const ProductShowcase = () => {
   const navigate = useNavigate();
-  const { featuredProducts, loading: isLoading, error } = useFeaturedProducts(8);
+  const { featuredProducts, loading: isLoading, error } = useFeaturedProducts(16);
 
   const formatPrice = (price: number) => {
     return new Intl.NumberFormat('pt-BR', {
@@ -35,7 +35,7 @@ const ProductShowcase = () => {
             </p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 mb-12 max-w-7xl mx-auto">
-            {[...Array(8)].map((_, index) => (
+            {[...Array(16)].map((_, index) => (
               <Card key={index} className="animate-pulse">
                 <div className="bg-gray-300 h-64 rounded-t-2xl"></div>
                 <CardContent className="p-6">
@@ -167,9 +167,9 @@ const ProductShowcase = () => {
         {/* Call to Action */}
         <div className="text-center space-y-4">
           <p className="text-gray-600 max-w-md mx-auto">
-            Explore nossa coleção completa com mais de 400 tecidos premium organizados por categoria
+            Explore nossa coleção completa com mais de 200 tecidos premium organizados por categoria
           </p>
-          <Button 
+          <Button
             onClick={() => navigate('/produtos')}
             size="lg"
             className="bg-petrol-800 hover:bg-petrol-900 text-white px-8 py-4 rounded-full transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"

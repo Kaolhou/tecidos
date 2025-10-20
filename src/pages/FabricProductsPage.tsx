@@ -6,6 +6,8 @@ import { Badge } from '@/components/ui/badge';
 import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { ArrowRight, Search, Filter } from 'lucide-react';
+import { useQuery } from '@tanstack/react-query';
+import { supabase } from '@/integrations/supabase/client';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import WhatsAppButton from '@/components/WhatsAppButton';
@@ -19,13 +21,26 @@ const FabricProductsPage = () => {
   const [sortBy, setSortBy] = useState('name');
 
   const { categories, loading: categoriesLoading } = useProductCategories();
-  const { 
-    products, 
-    loading: productsLoading, 
-    error 
+  const {
+    products,
+    loading: productsLoading,
+    error
   } = useProducts({
     category: selectedCategory === 'todas' ? undefined : selectedCategory,
     search: searchTerm || undefined
+  });
+
+  // Buscar informações completas das categorias incluindo imagens
+  const { data: categoriesData } = useQuery({
+    queryKey: ['categories-full'],
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from('categories')
+        .select('*')
+        .order('name');
+      if (error) throw error;
+      return data;
+    },
   });
   
   const sortedProducts = useMemo(() => {
@@ -254,20 +269,25 @@ const FabricProductsPage = () => {
           </h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {categories.map((category) => {
-              // Encontrar um produto desta categoria para mostrar como imagem
+              // Buscar dados completos da categoria (incluindo imagem)
+              const categoryData = categoriesData?.find(c => c.name === category);
+              // Encontrar um produto desta categoria como fallback
               const categoryProduct = products.find(p => p.category === category);
               // Contar produtos desta categoria
               const categoryCount = products.filter(p => p.category === category).length;
-              
+
+              // Usar imagem da categoria ou fallback para imagem do produto
+              const categoryImage = categoryData?.image_url || categoryProduct?.image_url || '/placeholder-fabric.jpg';
+
               return (
-                <Card 
+                <Card
                   key={category}
                   className="cursor-pointer hover:shadow-lg transition-all duration-300 overflow-hidden"
                   onClick={() => setSelectedCategory(category)}
                 >
                   <div className="relative">
-                    <img 
-                      src={categoryProduct?.image_url || '/placeholder-fabric.jpg'} 
+                    <img
+                      src={categoryImage}
                       alt={category}
                       className="w-full h-32 object-cover"
                     />

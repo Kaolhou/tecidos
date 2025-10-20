@@ -8,6 +8,7 @@ import { Button } from '@/components/ui/button';
 import { format } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
 import { Package, Eye } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 interface Order {
   id: string;
@@ -26,6 +27,7 @@ interface Order {
 
 const UserOrders: React.FC = () => {
   const { user } = useAuth();
+  const navigate = useNavigate();
 
   const { data: orders, isLoading } = useQuery({
     queryKey: ['user-orders', user?.id],
@@ -104,7 +106,7 @@ const UserOrders: React.FC = () => {
           <p className="text-muted-foreground mb-4">
             Você ainda não fez nenhum pedido. Que tal dar uma olhada nos nossos produtos?
           </p>
-          <Button onClick={() => window.location.href = '/products'}>
+          <Button onClick={() => navigate('/produtos')}>
             Ver Produtos
           </Button>
         </CardContent>

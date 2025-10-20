@@ -73,31 +73,31 @@ const AdminPageExclusive = () => {
       
       <main className="container mx-auto px-4 py-8">
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900 mb-4">Painel Administrativo</h1>
-          <p className="text-gray-600">Gerencie produtos, pedidos e configurações da loja</p>
+          <h1 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">Painel Administrativo</h1>
+          <p className="text-sm md:text-base text-gray-600">Gerencie produtos, pedidos e configurações da loja</p>
         </div>
 
         <Tabs defaultValue="orders" className="space-y-6">
-          <TabsList className="grid w-full grid-cols-5">
-            <TabsTrigger value="orders" className="flex items-center gap-2">
+          <TabsList className="grid w-full grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-2">
+            <TabsTrigger value="orders" className="flex items-center justify-center gap-2">
               <ShoppingCart className="h-4 w-4" />
-              Pedidos
+              <span className="hidden sm:inline">Pedidos</span>
             </TabsTrigger>
-            <TabsTrigger value="products" className="flex items-center gap-2">
+            <TabsTrigger value="products" className="flex items-center justify-center gap-2">
               <Package className="h-4 w-4" />
-              Produtos
+              <span className="hidden sm:inline">Produtos</span>
             </TabsTrigger>
-            <TabsTrigger value="users" className="flex items-center gap-2">
+            <TabsTrigger value="users" className="flex items-center justify-center gap-2">
               <Users className="h-4 w-4" />
-              Usuários
+              <span className="hidden sm:inline">Usuários</span>
             </TabsTrigger>
-            <TabsTrigger value="analytics" className="flex items-center gap-2">
+            <TabsTrigger value="analytics" className="flex items-center justify-center gap-2">
               <BarChart3 className="h-4 w-4" />
-              Analytics
+              <span className="hidden sm:inline">Analytics</span>
             </TabsTrigger>
-            <TabsTrigger value="notifications" className="flex items-center gap-2">
+            <TabsTrigger value="notifications" className="flex items-center justify-center gap-2">
               <Bell className="h-4 w-4" />
-              Notificações
+              <span className="hidden sm:inline">Notif</span>
             </TabsTrigger>
           </TabsList>
 

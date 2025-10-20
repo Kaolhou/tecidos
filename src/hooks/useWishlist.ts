@@ -35,8 +35,10 @@ export const useWishlist = () => {
             name,
             price,
             material,
+            image_url,
             product_images (
-              image_url
+              image_url,
+              position
             )
           )
         `)
@@ -49,12 +51,20 @@ export const useWishlist = () => {
 
       const wishlist: WishlistItem[] = data?.map(item => {
         const product = item.products as any;
+
+        // Priorizar image_url do produto, depois a primeira imagem de product_images
+        let imageUrl = product.image_url;
+        if (!imageUrl && product.product_images && product.product_images.length > 0) {
+          const sortedImages = [...product.product_images].sort((a, b) => a.position - b.position);
+          imageUrl = sortedImages[0].image_url;
+        }
+
         return {
           id: product.id,
           name: product.name,
           price: Number(product.price),
           material: product.material,
-          image_url: product.product_images?.[0]?.image_url || null
+          image_url: imageUrl || null
         };
       }) || [];
 

@@ -9,6 +9,9 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import WhatsAppButton from '@/components/WhatsAppButton';
 import { useProduct, useProductsByCategory } from '@/hooks/useProducts';
+import { useCart } from '@/hooks/useCart';
+import { useWishlist } from '@/hooks/useWishlist';
+import { toast } from '@/hooks/use-toast';
 
 // Mock reviews para cada produto
 const generateMockReviews = (productName: string) => [
@@ -42,10 +45,11 @@ const FabricProductDetailsPage = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
   const [quantity, setQuantity] = useState(1);
-  const [isWishlisted, setIsWishlisted] = useState(false);
 
   const { product, loading, error } = useProduct(id || '');
   const { products: allRelatedProducts, loading: relatedLoading } = useProductsByCategory(product?.category);
+  const { addToCart } = useCart();
+  const { addToWishlist, removeFromWishlist, isInWishlist } = useWishlist();
 
   // Loading state
   if (loading) {
@@ -126,7 +130,75 @@ const FabricProductDetailsPage = () => {
         console.log('Erro ao compartilhar:', error);
       }
     } else {
-      navigator.clipboard.writeText(window.location.href);
+      // Copiar para área de transferência
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        toast({
+          title: "Link copiado!",
+          description: "O link do produto foi copiado para a área de transferência.",
+        });
+      } catch (error) {
+        toast({
+          title: "Erro ao copiar",
+          description: "Não foi possível copiar o link.",
+          variant: "destructive"
+        });
+      }
+    }
+  };
+
+  const handleWhatsAppQuote = () => {
+    const phoneNumber = "5513996479114";
+    const message = `Olá! Gostaria de solicitar um orçamento para o produto:\n\n*${product.name}*\nQuantidade: ${quantity} metro(s)\nPreço unitário: ${formatPrice(product.price)}/metro\nTotal: ${formatPrice(product.price * quantity)}\n\nPoderia me enviar mais informações?`;
+    const encodedMessage = encodeURIComponent(message);
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+    window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+  };
+
+  const handleAddToCart = () => {
+    if (!product) return;
+
+    // Garantir que sempre temos uma imagem válida
+    let imageUrl = product.image_url;
+
+    // Se não houver image_url, tentar pegar da primeira imagem
+    if (!imageUrl && product.images && product.images.length > 0) {
+      const sortedImages = [...product.images].sort((a, b) => a.position - b.position);
+      imageUrl = sortedImages[0].image_url;
+    }
+
+    addToCart({
+      id: product.id,
+      name: product.name,
+      price: product.price,
+      image_url: imageUrl,
+      material: product.material
+    }, quantity);
+  };
+
+  const handleToggleWishlist = () => {
+    if (!product) return;
+
+    // Garantir que sempre temos uma imagem válida
+    let imageUrl = product.image_url;
+
+    // Se não houver image_url, tentar pegar da primeira imagem
+    if (!imageUrl && product.images && product.images.length > 0) {
+      const sortedImages = [...product.images].sort((a, b) => a.position - b.position);
+      imageUrl = sortedImages[0].image_url;
+    }
+
+    // Se já está na wishlist, remove; senão, adiciona
+    if (isInWishlist(product.id)) {
+      removeFromWishlist(product.id);
+    } else {
+      addToWishlist({
+        id: product.id,
+        name: product.name,
+        price: product.price,
+        image_url: imageUrl,
+        material: product.material
+      });
     }
   };
 
@@ -249,8 +321,9 @@ const FabricProductDetailsPage = () => {
               </div>
 
               <div className="flex flex-col sm:flex-row gap-3">
-                <Button 
-                  size="lg" 
+                <Button
+                  size="lg"
+                  onClick={handleAddToCart}
                   className="flex-1 bg-petrol-800 hover:bg-petrol-900 text-white"
                 >
                   <ShoppingCart className="mr-2 h-5 w-5" />
@@ -259,10 +332,12 @@ const FabricProductDetailsPage = () => {
                 <Button
                   size="lg"
                   variant="outline"
-                  onClick={() => setIsWishlisted(!isWishlisted)}
-                  className="border-petrol-600 text-petrol-700 hover:bg-petrol-600 hover:text-white"
+                  onClick={handleToggleWishlist}
+                  className={`border-petrol-600 hover:bg-petrol-600 hover:text-white ${
+                    isInWishlist(product.id) ? 'bg-petrol-600 text-white' : 'text-petrol-700'
+                  }`}
                 >
-                  <Heart className={`h-5 w-5 ${isWishlisted ? 'fill-current' : ''}`} />
+                  <Heart className={`h-5 w-5 ${isInWishlist(product.id) ? 'fill-current' : ''}`} />
                 </Button>
                 <Button
                   size="lg"
@@ -274,9 +349,10 @@ const FabricProductDetailsPage = () => {
                 </Button>
               </div>
               
-              <Button 
-                variant="outline" 
-                size="lg" 
+              <Button
+                variant="outline"
+                size="lg"
+                onClick={handleWhatsAppQuote}
                 className="w-full border-petrol-800 text-petrol-800 hover:bg-petrol-800 hover:text-white"
               >
                 Entrar em Contato para Orçamento

@@ -41,54 +41,55 @@ const DashboardPage = () => {
       <div className="container mx-auto px-4 py-8">
         <div className="max-w-4xl mx-auto">
           <div className="mb-8">
-            <div className="flex items-center justify-between">
+            <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
               <div className="flex items-center space-x-4">
-                <Avatar className="h-20 w-20">
+                <Avatar className="h-16 w-16 md:h-20 md:w-20">
                   <AvatarImage src={profile?.profile_image || ''} />
                   <AvatarFallback className="text-lg">
                     {getInitials(profile?.name)}
                   </AvatarFallback>
                 </Avatar>
                 <div>
-                  <h1 className="text-3xl font-bold">Olá, {profile?.name || 'Usuário'}!</h1>
-                  <p className="text-gray-600">{profile?.email}</p>
+                  <h1 className="text-2xl md:text-3xl font-bold">Olá, {profile?.name || 'Usuário'}!</h1>
+                  <p className="text-sm md:text-base text-gray-600 truncate max-w-[200px] md:max-w-none">{profile?.email}</p>
                   <div className="mt-2">
                     <Badge variant="secondary">Cliente</Badge>
                   </div>
                 </div>
               </div>
-              
+
               {/* Botão Admin para tecidosleticia@gmail.com */}
               {profile?.email === 'tecidosleticia@gmail.com' && (
-                <Button 
+                <Button
                   onClick={handleAdminAccess}
                   variant="outline"
-                  className="flex items-center gap-2"
+                  className="flex items-center gap-2 w-full md:w-auto"
                 >
                   <Settings className="h-4 w-4" />
-                  Área Administrativa
+                  <span className="hidden sm:inline">Área Administrativa</span>
+                  <span className="sm:hidden">Admin</span>
                 </Button>
               )}
             </div>
           </div>
 
           <Tabs defaultValue="profile" className="space-y-6">
-            <TabsList className="grid w-full grid-cols-4">
-              <TabsTrigger value="profile" className="flex items-center space-x-2">
+            <TabsList className="grid w-full grid-cols-2 md:grid-cols-4">
+              <TabsTrigger value="profile" className="flex items-center justify-center gap-2">
                 <User className="h-4 w-4" />
-                <span>Perfil</span>
+                <span className="hidden sm:inline">Perfil</span>
               </TabsTrigger>
-              <TabsTrigger value="wishlist" className="flex items-center space-x-2">
+              <TabsTrigger value="wishlist" className="flex items-center justify-center gap-2">
                 <Heart className="h-4 w-4" />
-                <span>Lista de Desejos</span>
+                <span className="hidden sm:inline">Desejos</span>
               </TabsTrigger>
-              <TabsTrigger value="orders" className="flex items-center space-x-2">
+              <TabsTrigger value="orders" className="flex items-center justify-center gap-2">
                 <Package className="h-4 w-4" />
-                <span>Pedidos</span>
+                <span className="hidden sm:inline">Pedidos</span>
               </TabsTrigger>
-              <TabsTrigger value="settings" className="flex items-center space-x-2">
+              <TabsTrigger value="settings" className="flex items-center justify-center gap-2">
                 <Settings className="h-4 w-4" />
-                <span>Configurações</span>
+                <span className="hidden sm:inline">Config</span>
               </TabsTrigger>
             </TabsList>
 

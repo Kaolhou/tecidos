@@ -5,10 +5,12 @@ import { Heart, ShoppingCart, Trash2 } from 'lucide-react';
 import { useWishlist } from '@/hooks/useWishlist';
 import { useCart } from '@/hooks/useCart';
 import { getProductImages } from '@/utils/productImages';
+import { useNavigate } from 'react-router-dom';
 
 const UserWishlist: React.FC = () => {
   const { wishlistItems, loading, removeFromWishlist } = useWishlist();
   const { addToCart } = useCart();
+  const navigate = useNavigate();
 
   const formatPrice = (price: number) => {
     return new Intl.NumberFormat('pt-BR', {
@@ -54,7 +56,7 @@ const UserWishlist: React.FC = () => {
           <p className="text-muted-foreground mb-4">
             Você ainda não adicionou nenhum produto à sua lista de desejos.
           </p>
-          <Button onClick={() => window.location.href = '/products'}>
+          <Button onClick={() => navigate('/produtos')}>
             Explorar Produtos
           </Button>
         </CardContent>
